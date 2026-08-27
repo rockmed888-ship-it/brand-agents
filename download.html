@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Download Dale Ray or DD — Brand Agents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container" style="max-width: 720px">
+        <div class="section-head">
+          <p class="eyebrow">Download</p>
+          <h1>Download Dale or DD</h1>
+          <p class="lead">
+            <strong>Dale</strong> = Windows hands. <strong>DD</strong> = Android hands.
+            Grok on the phone runs the PC. Grok on the PC runs the phone.
+            Next: <a href="connect.html">3 steps to hook Grok</a>.
+          </p>
+        </div>
+
+        <div class="card" style="margin-bottom: var(--s4); border-color: var(--accent-border)">
+          <p class="tier" style="margin:0 0 8px;color:var(--secondary);font-size:13px;font-weight:600">
+            Android phone · APK
+          </p>
+          <h3 style="margin-bottom:12px">DD for Android</h3>
+          <p>
+            Hands on your phone. Overlay is Patch. Separate from Dale.
+            Open the phone page and download the APK on ROMEO.
+          </p>
+          <p style="margin-top: var(--s3)">
+            <a class="btn btn-primary btn-lg" href="dd.html">Get DD on your phone</a>
+            <a class="btn btn-secondary" href="/releases/DD.apk" style="margin-left:8px">DD.apk</a>
+          </p>
+          <p class="soft" style="margin-top: var(--s2)">
+            Scan from this PC: open <a href="try.html">the try page</a> on the phone, or tap the APK link in Chrome on the phone.
+          </p>
+        </div>
+
+        <div class="card" style="margin-bottom: var(--s4); border-color: var(--accent-border)">
+          <p class="tier" style="margin:0 0 8px;color:var(--secondary);font-size:13px;font-weight:600">
+            Android phone · APK · girl version
+          </p>
+          <h3 style="margin-bottom:12px">BeeDee for Android</h3>
+          <p>
+            Exact copy of DD. Overlay is BeeDee — white fox, pink dress, sparkles.
+            Same Grok tools. Pick DD or BeeDee, not both.
+          </p>
+          <p style="margin-top: var(--s3)">
+            <a class="btn btn-primary btn-lg" href="beedee.html">Get BeeDee on your phone</a>
+            <a class="btn btn-secondary" href="/releases/BeeDee.apk" style="margin-left:8px">BeeDee.apk</a>
+          </p>
+        </div>
+
+        <div class="card" style="margin-bottom: var(--s4)">
+          <p class="tier" style="margin:0 0 8px;color:var(--secondary);font-size:13px;font-weight:600">Windows x64 · Installer</p>
+          <h3 style="margin-bottom:12px">Dale Ray for Windows</h3>
+          <p>
+            Download the installer, double-click <strong>DaleRaySetup.exe</strong>, install, and launch.
+            No Node.js or developer tools required. 64-bit Windows only.
+            For Local mode, install <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> separately.
+          </p>
+          <p style="margin-top: var(--s3)">
+            <a class="btn btn-primary btn-lg" id="dlBtn" href="connect.html">Start 3-day trial to download</a>
+            <a class="btn btn-secondary" href="connect.html" style="margin-left:8px">Get Grok token</a>
+          </p>
+          <p class="soft" style="margin-top: var(--s2)" id="dlNote">
+            Consumer installer — Download → Install → Launch. Windows may show SmartScreen until code-signing is added; choose More info → Run anyway.
+          </p>
+          <p class="soft" style="margin-top: var(--s2)">macOS — coming next.</p>
+        </div>
+
+        <div class="card" style="margin-bottom: var(--s4)">
+          <h3>Install steps</h3>
+          <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
+            <li>Download <code>DaleRaySetup.exe</code></li>
+            <li>Double-click the installer and follow the wizard</li>
+            <li>Launch <strong>Dale Ray</strong> from the Start Menu or desktop shortcut. Leave it running.</li>
+            <li>If Windows SmartScreen appears: More info → Run anyway. Publisher should say Brand Agents when we are signed.</li>
+          </ol>
+          <p class="soft">No <code>npm install</code>. No developer tools. Node.js is not required.</p>
+        </div>
+
+        <div id="account" class="card" style="margin-bottom: var(--s4)">
+          <h3>Managed cloud account</h3>
+          <p>After install, open <strong>Settings → Managed Brand Agents</strong> to register/login and checkout. BYOK keys never leave your PC.</p>
+          <p style="margin-top: var(--s2)">
+            <a class="btn btn-secondary" href="pricing.html">View plans</a>
+          </p>
+        </div>
+
+        <h2>What first run asks</h2>
+        <div class="perm-board" style="max-width: none; margin-bottom: var(--s4)">
+          <div class="title">On first launch (in-app)</div>
+          <div class="perm-row"><span>Welcome &amp; risk framing</span><span class="ok">Required</span></div>
+          <div class="perm-row"><span>Screen / mouse / keyboard / accessibility</span><span class="ok">Accept or decline each</span></div>
+          <div class="perm-row"><span>Autonomy level 1–5</span><span class="ok">Default: 1</span></div>
+          <div class="perm-row"><span>AI mode: Local · BYOK · Managed</span><span class="ok">Required</span></div>
+        </div>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("download.html");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+      // Probe consumer installer
+      fetch("/releases/DaleRaySetup.exe", { method: "HEAD" })
+        .then((r) => {
+          const note = document.getElementById("dlNote");
+          if (r.ok) {
+            note.textContent =
+              "Installer is ready. Download → double-click → install → launch. No Node.js required.";
+          } else {
+            note.textContent =
+              "Installer not on this host yet — upload DaleRaySetup.exe to /releases/.";
+            document.getElementById("dlBtn").href = "#account";
+          }
+        })
+        .catch(() => {});
+    </script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>
+

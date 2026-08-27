@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Brand Agents</title>
+    <link rel="stylesheet" href="../assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container legal-page">
+        <h1>Privacy Policy</h1>
+        <p class="legal-meta">Brand Agents · brandbyagent.com · Last updated: August 6, 2026<br />
+        Draft for privacy counsel review before production enforcement.</p>
+
+        <h2>1. Overview</h2>
+        <p>This Policy describes how Brand Agents handles information when you use our website, accounts, and desktop Software (including Dale Ray).</p>
+
+        <h2>2. Data we collect</h2>
+        <ul>
+          <li><strong>Account data:</strong> name, email, plan, billing identifiers via our payment processor</li>
+          <li><strong>Usage metrics:</strong> feature use counts, autonomy level changes, crash diagnostics (if enabled)</li>
+          <li><strong>Support communications:</strong> messages you send us</li>
+          <li><strong>Website analytics:</strong> standard logs and optional analytics cookies (if enabled on the site)</li>
+        </ul>
+
+        <h2>3. Screen content &amp; screenshots</h2>
+        <p>If you grant screen capture permission, screenshots and screen-derived signals are processed so the agent can function. They are:</p>
+        <ul>
+          <li>Processed for the agent’s task performance</li>
+          <li>Not stored long-term on our servers by default</li>
+          <li>Not used to train public foundation models unless you explicitly opt in to a separate program</li>
+        </ul>
+        <p>Local copies may exist temporarily on your device (e.g. diagnostic folders you can clear).</p>
+
+        <h2>4. API keys (BYOK)</h2>
+        <p>Keys you supply are stored only locally on your device or encrypted with protections designed to prevent sharing. We do not sell API keys. Managed plans use our provider credentials server-side without exposing them to you.</p>
+
+        <h2>5. Model providers</h2>
+        <p>When you use BYOK, your prompts/images are sent to the provider you configure under that provider’s terms. When you use managed access, we send requests to official provider APIs as needed to fulfill the service. We do not use unofficial scraped endpoints.</p>
+
+        <h2>6. How we use data</h2>
+        <ul>
+          <li>Provide and secure the service</li>
+          <li>Billing and fraud prevention</li>
+          <li>Improve reliability (aggregated / diagnostic)</li>
+          <li>Communicate product updates you can opt out of where required</li>
+        </ul>
+
+        <h2>7. Sharing</h2>
+        <p>We share data with processors (hosting, payments, email) under contracts, or when required by law. We do not sell personal information.</p>
+
+        <h2>8. Retention</h2>
+        <p>Account data is retained while your account is active and as required for legal/accounting purposes. Crash logs and metrics are retained for limited operational windows.</p>
+
+        <h2>9. Security</h2>
+        <p>We use reasonable technical and organizational measures. No method of transmission or storage is 100% secure.</p>
+
+        <h2>10. Your choices</h2>
+        <ul>
+          <li>Revoke OS permissions in system settings and in-app</li>
+          <li>Export or delete local memory/training data where the product provides tools</li>
+          <li>Request account deletion via support</li>
+          <li>Disable optional analytics/crash reporting when offered</li>
+        </ul>
+
+        <h2>11. Children</h2>
+        <p>The Software is not directed to children under 16. Do not use the service if you are under the age required in your jurisdiction.</p>
+
+        <h2>12. International</h2>
+        <p>Data may be processed in the United States and other countries where our providers operate.</p>
+
+        <h2>13. Contact</h2>
+        <p>privacy@brandbyagent.com (or contact published on brandbyagent.com).</p>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="../assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+      document.querySelectorAll("#site-footer a, #site-header a").forEach((a) => {
+        const h = a.getAttribute("href") || "";
+        if (h && !h.startsWith("http") && !h.startsWith("#") && !h.startsWith("../")) {
+          a.setAttribute("href", "../" + h);
+        }
+      });
+    </script>
+    <script src="../assets/js/site.js"></script>
+  </body>
+</html>

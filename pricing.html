@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pricing — Brand Agents</title>
+    <meta name="description" content="Starter $29 BYOK, Pro $79 managed, Ultimate $149. Lifetime and top-ups available." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow">Pricing</p>
+          <h1>Plans built around how you work.</h1>
+          <p class="lead">
+            BYOK for privacy and control of model spend. Managed when you want it to just work.
+            We describe capacity as daily work—not token jargon.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <p class="tier">Starter · BYOK</p>
+            <p class="amount">$29<span>/mo</span></p>
+            <p class="for">You already pay Grok or ChatGPT. This is the hands on your PC.</p>
+            <ul>
+              <li>Quiet offscreen browser — your mouse stays yours</li>
+              <li>Grok Custom Connector (paste MCP URL + pairing token)</li>
+              <li>Confirm chip for Pay / Send / Publish</li>
+              <li>Kill switch Ctrl+Shift+Esc</li>
+              <li>Optional BYOK if you do not want managed AI</li>
+            </ul>
+            <a class="btn btn-secondary btn-block" href="connect.html">Add to Grok · $29/mo</a>
+          </article>
+
+          <article class="price-card recommended">
+            <span class="tag">Recommended</span>
+            <p class="tier">Pro · Managed</p>
+            <p class="amount">$79<span>/mo</span></p>
+            <p class="for">For serious daily users who want managed AI and steady multi-step capacity.</p>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>Managed model access</li>
+              <li>Capacity for regular multi-step desktop tasks across a work month</li>
+              <li>Automatic product updates</li>
+              <li>Higher autonomy options (still gated by you)</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="download.html?plan=pro">Choose Pro</a>
+          </article>
+
+          <article class="price-card">
+            <p class="tier">Ultimate</p>
+            <p class="amount">$149<span>/mo</span></p>
+            <p class="for">For power users who need heavy automation and premium routing.</p>
+            <ul>
+              <li>Everything in Pro</li>
+              <li>Heavy daily automation capacity</li>
+              <li>Priority model routing</li>
+              <li>Early access to new agents</li>
+              <li>Priority support</li>
+            </ul>
+            <a class="btn btn-secondary btn-block" href="download.html?plan=ultimate">Choose Ultimate</a>
+          </article>
+        </div>
+
+        <div class="grid-2" style="margin-top: var(--s5)">
+          <article class="card">
+            <h3>Lifetime · BYOK — $249 once</h3>
+            <p>
+              Own the software. Supply your own keys. Product updates for the first year
+              (terms shown at purchase). Preferred by people who dislike subscriptions.
+            </p>
+            <p style="margin-top: var(--s2)">
+              <a class="btn btn-secondary" href="download.html?plan=lifetime">Lifetime BYOK</a>
+            </p>
+          </article>
+          <article class="card">
+            <h3>Capacity top-ups</h3>
+            <p>
+              Busy week? Add capacity without changing plans: $19 · $49 · $99.
+              Shown before you run out—never a silent wall.
+            </p>
+          </article>
+        </div>
+
+        <div class="section-head" style="margin-top: var(--s7)">
+          <h2>Questions people actually ask</h2>
+        </div>
+        <div class="card" style="margin-bottom: var(--s5); padding: var(--s4)">
+          <h3 style="margin-bottom: 8px">Looking for teams?</h3>
+          <p>
+            Business plans start at <strong style="color: var(--text)">$149 per user / month</strong>,
+            with Business Plus and Enterprise for higher usage, onboarding, and admin needs.
+            Live demos on your own computers available.
+          </p>
+          <p style="margin-top: var(--s3)">
+            <a class="btn btn-primary" href="business.html">Business pricing &amp; demo</a>
+          </p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Can Dale Ray move my mouse and type?</summary>
+            <p>
+              Only after you grant input permission, and only within the autonomy level you set.
+              You can revoke that permission anytime. Default setup is conservative.
+            </p>
+          </details>
+          <details>
+            <summary>What happens if I run out of managed capacity?</summary>
+            <p>
+              Managed AI stops acting and shows upgrade or top-up options. Your kill switch
+              and local presence still work. BYOK users continue against their own provider limits.
+            </p>
+          </details>
+          <details>
+            <summary>Do you train public models on my screen?</summary>
+            <p>
+              Screen content is processed for the agent to function. It is not stored long-term
+              on our servers by default and is not used to train public foundation models unless
+              you explicitly opt in. See Privacy.
+            </p>
+          </details>
+          <details>
+            <summary>What if the agent makes a mistake?</summary>
+            <p>
+              Agents can mis-click or mistype. You accept that risk when you enable control.
+              Use Suggest / Confirm levels until you are comfortable. Full risk disclosure is in Legal.
+            </p>
+          </details>
+          <details>
+            <summary>Windows or Mac?</summary>
+            <p>Windows is first. macOS is next. Requirements are listed on Download.</p>
+          </details>
+        </div>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("pricing.html");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+    </script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

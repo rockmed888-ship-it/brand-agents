@@ -1,0 +1,6 @@
+.git
+.netlify
+docs
+*.md
+releases/DaleRay-Windows.zip
+releases/DaleRaySetup.exe

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hands on PC and phone — Brand Agents</title>
+    <meta
+      name="description"
+      content="Grok on your phone runs your Windows PC. Grok on your PC runs your Android phone. One connector. Dale and DD."
+    />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container" style="max-width:720px">
+        <p class="eyebrow">One Grok. Two pairs of hands.</p>
+        <h1>Use Grok on either device. Drive the other.</h1>
+        <p class="lead">
+          The product is permissioned automation through DD or BeeDee’s hands — and Dale on Windows.
+          Use the <strong>Grok app on your phone</strong> to run this phone. Same paste also lets Grok on the PC run the phone, and the phone Grok run the PC.
+          Send / Pay / Post still confirm on the device that acts.
+        </p>
+
+        <div class="card" style="margin-bottom:1.5rem">
+          <h3>3 steps</h3>
+          <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
+            <li><strong>Get your link</strong> — start the trial below. This page then shows one Server URL.</li>
+            <li><strong>Install both hands</strong> — Dale on Windows, DD on Android. Leave them running.</li>
+            <li><strong>Paste once into Grok</strong> — phone app or grok.com → Connectors → New → Custom → paste the Server URL.</li>
+          </ol>
+        </div>
+
+        <div class="card" id="locked" style="margin-bottom:1.5rem">
+          <h3>1 · Start 3-day trial · then $29/mo</h3>
+          <p>Email so we can put your Server URL on this page after Stripe.</p>
+          <label class="soft" for="payEmail" style="display:block;margin:0.75rem 0 0.35rem">Email</label>
+          <input id="payEmail" type="email" autocomplete="email" required placeholder="you@example.com" style="width:100%;max-width:360px;padding:0.65rem 0.8rem;border-radius:8px;border:1px solid #252b35;background:#0b0d10;color:#e8eaed;margin-bottom:0.85rem" />
+          <p>
+            <button class="btn btn-primary btn-lg" type="button" id="payStarter">Start trial · get Server URL</button>
+          </p>
+          <p class="soft" id="payNote">Downloads unlock after checkout.</p>
+          <p class="soft" id="payErr" style="color:#f87171"></p>
+        </div>
+
+        <div class="card" id="unlocked" style="display:none;margin-bottom:1.5rem">
+          <h3>Your one Server URL</h3>
+          <p class="soft" id="unlockEmail"></p>
+          <code id="mcpUrl" style="display:block;word-break:break-all;padding:0.7rem 0.85rem;background:#0b0d10;border:1px solid #252b35;border-radius:8px;margin:0.5rem 0 0.75rem"></code>
+          <button class="btn btn-primary" type="button" id="copyMcp">Copy Server URL</button>
+          <p class="soft" id="copyMsg" style="margin-top:0.75rem"></p>
+          <p class="soft" style="margin-top:0.75rem">
+            Paste this <strong>same line</strong> in two places: (1) Grok app → Connectors → Custom.
+            (2) DD or BeeDee → Server URL → Save. Do not split it. Do not add a query string.
+          </p>
+        </div>
+
+        <div class="card" id="installCard" style="margin-bottom:1.5rem">
+          <h3>2 · Install the hands</h3>
+          <p class="muted">You need both. Keep both running.</p>
+          <p style="margin-top:0.85rem">
+            <a class="btn btn-primary" id="dlBtn" href="/releases/DaleRaySetup.exe">Dale for Windows</a>
+            <a class="btn btn-secondary" id="ddBtn" href="dd.html" style="margin-left:8px">DD for Android</a>
+          </p>
+          <p class="soft" style="margin-top:0.75rem">
+            Windows: install Dale → if SmartScreen appears, More info → Run anyway → launch → leave it on.<br />
+            Phone: open <a href="dd.html">/dd</a> in Chrome → Allow Chrome to install this app → Overlay + Accessibility → Start DD.
+          </p>
+        </div>
+
+        <div class="card" id="grokSteps" style="margin-bottom:1.5rem">
+          <h3>3 · Hook Grok (app or computer — same)</h3>
+          <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
+            <li>Open <a href="https://grok.com/connectors" target="_blank" rel="noopener">grok.com/connectors</a> (works in the Grok phone app too).</li>
+            <li>New Connector → <strong>Custom</strong>. Name it <strong>Dale + DD</strong>.</li>
+            <li>Paste the Server URL from this page. There is no Bearer or token field — the URL is enough. Save.</li>
+          </ol>
+          <h3 style="margin-top:1.25rem">You are connected when the other device moves</h3>
+          <ul class="muted" style="padding-left:1.2rem;line-height:1.7">
+            <li><strong>Grok app on your phone:</strong> “DD, open Messages.” (or BeeDee — same tools). Also: “Dale, open Notepad.”</li>
+            <li><strong>Grok on the computer:</strong> “DD, open Messages.”</li>
+            <li>On the phone: hold the pet to talk; double-tap the pet to stop. Repeats get faster as it remembers.</li>
+          </ul>
+          <p class="soft">Dale = Windows hands. DD = Android hands. You keep Send, Pay, and Post. One Stop switch. Uninstall ends it.</p>
+        </div>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("connect.html");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+      const API = "https://brand-agents-api-production.up.railway.app";
+      const MCP = "https://brand-agents-api-production.up.railway.app/mcp";
+      function copy(text, ok) {
+        navigator.clipboard.writeText(text).then(
+          () => { document.getElementById("copyMsg").textContent = ok; },
+          () => { document.getElementById("copyMsg").textContent = "Select the box and Ctrl+C."; }
+        );
+      }
+      function showUnlocked(data) {
+        document.getElementById("locked").style.display = "none";
+        document.getElementById("unlocked").style.display = "block";
+        const url = data.mcp_url || MCP;
+        document.getElementById("mcpUrl").textContent = url;
+        document.getElementById("unlockEmail").textContent =
+          (data.unlimited ? "Founder / unlimited. " : "Trial / paid for ") +
+          (data.email || "your account") +
+          ".";
+        document.getElementById("dlBtn").href = data.download_url || "/releases/DaleRaySetup.exe";
+        if (data.dd_apk_url) document.getElementById("ddBtn").href = data.dd_apk_url;
+        document.getElementById("copyMcp").onclick = () =>
+          copy(url, "Copied. Paste into Grok Custom connector AND into DD/BeeDee → Server URL.");
+      }
+      const params = new URLSearchParams(location.search);
+      const note = document.getElementById("payNote");
+      const errEl = document.getElementById("payErr");
+      if (params.get("cancelled") === "1") note.textContent = "Checkout cancelled. No charge.";
+      const sid = params.get("session_id");
+      if (sid) {
+        fetch(API + "/v1/connect/unlock?session_id=" + encodeURIComponent(sid))
+          .then((r) => r.json().then((j) => ({ ok: r.ok, j })))
+          .then(({ ok, j }) => {
+            if (!ok) throw new Error(j.error || "unlock_failed");
+            showUnlocked(j);
+          })
+          .catch((e) => {
+            errEl.textContent = "Checkout finished but unlock failed: " + e.message;
+          });
+      }
+      fetch(API + "/health")
+        .then((r) => r.json())
+        .then((h) => {
+          if (sid) return;
+          note.textContent = h.stripe_live
+            ? "3-day trial, then $29/mo."
+            : "3-day trial checkout is wired.";
+        })
+        .catch(() => {});
+      document.getElementById("payStarter").addEventListener("click", async () => {
+        const btn = document.getElementById("payStarter");
+        const email = document.getElementById("payEmail").value.trim();
+        errEl.textContent = "";
+        if (!email || !email.includes("@")) {
+          errEl.textContent = "Enter an email so we can show your Server URL after checkout.";
+          return;
+        }
+        btn.disabled = true;
+        btn.textContent = "Opening Stripe…";
+        try {
+          const r = await fetch(API + "/v1/checkout/public", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ price_key: "starter", email }),
+          });
+          const data = await r.json();
+          if (!r.ok || !data.url) throw new Error(data.error || "checkout_failed");
+          window.location.href = data.url;
+        } catch (e) {
+          errEl.textContent = e.message || String(e);
+          btn.disabled = false;
+          btn.textContent = "Start trial · get Server URL";
+        }
+      });
+    </script>
+  </body>
+</html>

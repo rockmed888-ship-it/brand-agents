@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Risk disclaimer — Brand Agents</title>
+    <link rel="stylesheet" href="../assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container legal-page">
+        <h1>Risk acknowledgement</h1>
+        <p class="legal-meta">Brand Agents · brandbyagent.com · Last updated: August 6, 2026<br />
+        Shown during first-run setup. Must be accepted before input control is enabled.</p>
+
+        <div class="callout danger">
+          An agent with mouse and keyboard control can make mistakes, click the wrong
+          things, type into the wrong field, or cause unintended actions—including data
+          loss, messages sent, purchases, or account changes.
+        </div>
+
+        <h2>Plain-language summary</h2>
+        <ul>
+          <li>You decide what the agent is allowed to do through permissions and autonomy levels.</li>
+          <li>Higher autonomy increases convenience and risk.</li>
+          <li>You should start at Observe / Suggest and raise control only when comfortable.</li>
+          <li>You can pause or stop the agent at any time with the kill switch.</li>
+          <li>You should not grant control over systems you cannot afford to have mis-operated.</li>
+        </ul>
+
+        <h2>No liability for outcomes of authorized action</h2>
+        <p>
+          To the maximum extent permitted by law, Brand Agents is not liable for data
+          loss, financial transactions, account issues, legal or regulatory consequences,
+          or any other outcome resulting from the agent’s actions when those actions were
+          performed under permissions and autonomy settings you enabled, or commands you
+          issued.
+        </p>
+
+        <h2>Your acceptance</h2>
+        <p>
+          By checking “I understand and accept these risks” in the Software, you confirm
+          you have read this acknowledgement and the Terms of Service, and you accept
+          responsibility for use of computer-control features.
+        </p>
+
+        <p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="../assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+      document.querySelectorAll("#site-footer a, #site-header a").forEach((a) => {
+        const h = a.getAttribute("href") || "";
+        if (h && !h.startsWith("http") && !h.startsWith("#") && !h.startsWith("../")) {
+          a.setAttribute("href", "../" + h);
+        }
+      });
+    </script>
+    <script src="../assets/js/site.js"></script>
+  </body>
+</html>

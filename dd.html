@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DD for Android — Brand Agents</title>
+    <meta name="description" content="Install DD on your phone. Grok on the computer runs these hands. Overlay is Patch." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container" style="max-width: 720px">
+        <div class="section-head">
+          <p class="eyebrow">Android hands</p>
+          <h1>Install DD on this phone</h1>
+          <p class="lead">
+            Open this page <em>on the phone</em>. After Start DD, the <strong>Grok app on this phone</strong> runs these hands.
+            Hold the pet to talk. Double-tap to stop. Overlay is Patch.
+          </p>
+        </div>
+        <div class="card" style="margin-bottom: var(--s4)">
+          <h3>3 taps</h3>
+          <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
+            <li>Download and install <strong>DD.apk</strong>. Allow Chrome to install this app — Play does not allow this kind of helper yet.</li>
+            <li>Allow Overlay (Patch sits on screen so you can see when DD is working — not ads). Settings → Accessibility → <strong>DD</strong> → on.</li>
+            <li>Open DD → allow “run in background” if asked → <strong>Start DD</strong>. Leave the notification on.</li>
+          </ol>
+          <p style="margin-top: var(--s3)">
+            <a class="btn btn-primary btn-lg" id="apkBtn" href="/releases/DD.apk">Download DD.apk</a>
+          </p>
+          <p class="soft" style="margin-top: var(--s2)" id="apkNote">Allow Chrome to install this app. Send, pay, and post still confirm on this phone.</p>
+        </div>
+        <p><a class="text-link" href="connect.html">← Back to the 3 steps (PC + phone + Grok)</a></p>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("dd.html");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+      fetch("/releases/DD.apk", { method: "HEAD" })
+        .then((r) => {
+          const note = document.getElementById("apkNote");
+          if (r.ok) note.textContent = "APK ready. Tap Download, then Allow install.";
+        })
+        .catch(() => {});
+    </script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

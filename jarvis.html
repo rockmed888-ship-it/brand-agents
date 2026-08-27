@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DD Jarvis</title>
+    <meta name="theme-color" content="#09090b" />
+    <style>
+      :root {
+        --bg: #09090b;
+        --fg: #f4f4f5;
+        --muted: #a1a1aa;
+        --card: #18181b;
+        --line: rgba(255, 255, 255, 0.08);
+        --ok: #4ade80;
+        --warn: #fbbf24;
+        --danger: #f87171;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 15px/1.45 "IBM Plex Sans", system-ui, sans-serif;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+      main { max-width: 920px; margin: 0 auto; padding: 18px; }
+      .card { background: var(--card); border-radius: 14px; padding: 16px; margin: 12px 0; box-shadow: 0 0 0 1px var(--line); }
+      .grid { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+      @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+      textarea, input {
+        width: 100%;
+        background: #09090b;
+        color: var(--fg);
+        border: 0;
+        border-radius: 10px;
+        padding: 12px;
+        box-shadow: 0 0 0 1px var(--line);
+        font: inherit;
+      }
+      button {
+        min-height: 44px;
+        border: 0;
+        border-radius: 10px;
+        padding: 0 16px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .primary { background: #e4e4e7; color: #09090b; }
+      .ghost { background: transparent; color: var(--fg); box-shadow: 0 0 0 1px var(--line); }
+      .led { display: inline-block; width: 8px; height: 8px; border-radius: 99px; margin-right: 8px; }
+      .ok { background: var(--ok); }
+      .warn { background: var(--warn); }
+      .danger { background: var(--danger); }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+      .chips button { min-height: 40px; font-size: 12px; font-weight: 500; }
+      #log { white-space: pre-wrap; color: var(--muted); font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <div class="mono">Grok voice · DD · Stripe connector</div>
+        <h1 style="margin: 2px 0 0; font-size: 20px; font-weight: 500">Jarvis</h1>
+      </div>
+      <div>
+        <span class="mono" id="clock">--:--:--</span>
+        <span id="hold" class="mono" style="margin-left: 10px; color: var(--warn)">HOLD</span>
+        <span id="link" class="mono" style="margin-left: 10px">Link dark</span>
+      </div>
+    </header>
+    <main>
+      <section class="card">
+        <div class="mono">Council</div>
+        <h2 id="councilTitle" style="margin: 4px 0 12px; font-size: 18px">Arm DD, then give a direction</h2>
+        <div class="grid" id="council"></div>
+      </section>
+      <section class="card">
+        <div class="mono">Direction</div>
+        <h2 style="margin: 4px 0 12px; font-size: 18px">Tell DD what to do</h2>
+        <textarea id="task" rows="4" placeholder="Example: Run a Dent Coins promotion. Draft only — I will send."></textarea>
+        <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap">
+          <button class="primary" id="dispatch">Dispatch</button>
+          <button class="ghost" id="observe">What do you see?</button>
+        </div>
+        <div class="chips">
+          <button class="ghost" data-task="Run a promotion for Dent Coins. Draft only.">Run promotion</button>
+          <button class="ghost" data-task="Morning sweep. Count unread names. Do not send.">Morning sweep</button>
+          <button class="ghost" data-task="Open https://dtfdentcoin.com">Open Dent Coins</button>
+          <button class="ghost" data-task="Open Facebook. Find Dent Coins Page. Do not post.">Dent Coins Page</button>
+        </div>
+      </section>
+      <section class="card">
+        <div class="mono">Active</div>
+        <h2 id="active" style="margin: 4px 0 8px; font-size: 18px">No mission</h2>
+        <div id="log">Paste your Server URL token if Link stays dark. Start DD and leave it on.</div>
+      </section>
+    </main>
+    <script>
+      const api = /brand-agents-api|localhost|127\.0\.0\.1/.test(location.hostname)
+        ? ""
+        : "https://brand-agents-api-production.up.railway.app";
+      function token() {
+        const h = location.hash.replace(/^#/, "");
+        const q = new URLSearchParams(location.search);
+        const fromHash = new URLSearchParams(h);
+        return (
+          q.get("token") ||
+          fromHash.get("t") ||
+          fromHash.get("token") ||
+          localStorage.getItem("dd_pairing_token") ||
+          ""
+        );
+      }
+      function authHeaders() {
+        const t = token();
+        return t ? { Authorization: "Bearer " + t, "Content-Type": "application/json" } : { "Content-Type": "application/json" };
+      }
+      function tick() {
+        document.getElementById("clock").textContent = new Date().toLocaleTimeString();
+      }
+      setInterval(tick, 1000);
+      tick();
+      function renderCouncil(s) {
+        const c = s.council || {};
+        const rows = [
+          ["Dock marshal", c.dock, "Home screen map"],
+          ["Permission counsel", c.perms, "Required grants only"],
+          ["Hands protocol", c.hands, "Send / pay / post on glass"],
+          ["Voice", c.voice, "Jarvis speaks through DD"],
+          ["Link watch", c.link, s.linkOnline ? "DD online" : "Start DD and leave it on"],
+          ["Queue bosun", c.bosun, s.lastStuck ? s.lastStuck.question : "No open CONTROL"],
+        ];
+        document.getElementById("council").innerHTML = rows
+          .map(
+            ([t, on, d]) =>
+              `<div style="background:#111113;padding:12px;border-radius:10px"><span class="led ${on ? "ok" : "warn"}"></span><strong>${t}</strong><div class="mono" style="margin-top:6px">${d}</div></div>`
+          )
+          .join("");
+        document.getElementById("hold").textContent = s.hold ? "HOLD" : "LIVE";
+        document.getElementById("hold").style.color = s.hold ? "var(--warn)" : "var(--ok)";
+        document.getElementById("link").textContent = s.linkOnline ? "Link live" : "Link dark";
+        document.getElementById("councilTitle").textContent = s.speak || "";
+      }
+      async function refresh() {
+        const t = token();
+        if (!t) {
+          renderCouncil({ hold: true, linkOnline: false, council: {}, lastStuck: null, speak: "Need pairing token. Start DD, then open this deck from the app." });
+          return;
+        }
+        localStorage.setItem("dd_pairing_token", t);
+        const r = await fetch(api + "/v1/jarvis/status", { headers: authHeaders() });
+        const s = await r.json();
+        renderCouncil(s);
+      }
+      async function dispatch(task) {
+        const log = document.getElementById("log");
+        document.getElementById("active").textContent = task;
+        log.textContent = "Dispatching…";
+        const r = await fetch(api + "/v1/jarvis/dispatch", {
+          method: "POST",
+          headers: authHeaders(),
+          body: JSON.stringify({ task }),
+        });
+        const s = await r.json();
+        log.textContent = JSON.stringify(s, null, 2);
+        if (s.speak && window.speechSynthesis) {
+          const u = new SpeechSynthesisUtterance(s.speak);
+          speechSynthesis.cancel();
+          speechSynthesis.speak(u);
+        }
+        refresh();
+      }
+      document.getElementById("dispatch").onclick = () => dispatch(document.getElementById("task").value.trim());
+      document.getElementById("observe").onclick = () => dispatch("What do you see on the screen?");
+      document.querySelectorAll("[data-task]").forEach((b) => {
+        b.onclick = () => {
+          document.getElementById("task").value = b.dataset.task;
+          dispatch(b.dataset.task);
+        };
+      });
+      refresh();
+      setInterval(refresh, 8000);
+    </script>
+  </body>
+</html>

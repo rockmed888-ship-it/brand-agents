@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Acceptable Use — Brand Agents</title>
+    <link rel="stylesheet" href="../assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container legal-page">
+        <h1>Acceptable Use Policy</h1>
+        <p class="legal-meta">Brand Agents · brandbyagent.com · Last updated: August 6, 2026</p>
+
+        <p>You may not use Brand Agents to:</p>
+        <ul>
+          <li>Engage in illegal activity, fraud, theft, or unauthorized access</li>
+          <li>Harass, threaten, stalk, or abuse any person</li>
+          <li>Violate any third-party terms of service, platform rules, or intellectual property rights</li>
+          <li>Deploy malware, spam, or abusive automation at scale</li>
+          <li>Circumvent security, CAPTCHAs, or access controls you are not authorized to bypass</li>
+          <li>Process others’ personal data unlawfully</li>
+          <li>Use the Software in weapons, mass surveillance of individuals without lawful basis, or other prohibited high-risk abuse</li>
+        </ul>
+        <p>We may suspend accounts that violate this policy. Report abuse to abuse@brandbyagent.com (or the contact on brandbyagent.com).</p>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="../assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+      document.querySelectorAll("#site-footer a, #site-header a").forEach((a) => {
+        const h = a.getAttribute("href") || "";
+        if (h && !h.startsWith("http") && !h.startsWith("#") && !h.startsWith("../")) {
+          a.setAttribute("href", "../" + h);
+        }
+      });
+    </script>
+    <script src="../assets/js/site.js"></script>
+  </body>
+</html>

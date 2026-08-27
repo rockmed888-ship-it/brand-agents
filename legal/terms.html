@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terms of Service — Brand Agents</title>
+    <link rel="stylesheet" href="../assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container legal-page">
+        <h1>Terms of Service</h1>
+        <p class="legal-meta">Brand Agents · brandbyagent.com · Last updated: August 6, 2026<br />
+        Draft for product counsel review before production enforcement.</p>
+
+        <h2>1. Agreement</h2>
+        <p>By creating an account, downloading, or using Brand Agents software (“Software”), including Dale Ray and any Brand Agent, you agree to these Terms.</p>
+
+        <h2>2. What the product is</h2>
+        <p>Brand Agents are desktop software agents that may observe your screen, simulate input, and call AI models only as allowed by permissions and autonomy settings you control. They are not human employees and are not guaranteed to perform any task correctly or safely.</p>
+
+        <h2>3. Your control and responsibility</h2>
+        <p>Brand Agents act under your direction and control settings. You are responsible for:</p>
+        <ul>
+          <li>Permissions you grant (capture, input, accessibility, network)</li>
+          <li>Autonomy levels you enable</li>
+          <li>Commands, goals, and approvals you provide</li>
+          <li>API keys you supply (BYOK) and usage on your provider accounts</li>
+          <li>Consequences of actions the agent takes while authorized by your settings</li>
+        </ul>
+
+        <h2>4. No warranty</h2>
+        <p>THE SOFTWARE IS PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not warrant uninterrupted or error-free operation, or that any automation will succeed.</p>
+
+        <h2>5. Limitation of liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, Brand Agents AND ITS OWNERS, AFFILIATES, AND SUPPLIERS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR LOSS OF DATA, PROFITS, GOODWILL, BUSINESS INTERRUPTION, OR COST OF SUBSTITUTE SERVICES, ARISING FROM USE OF THE SOFTWARE—EVEN IF ADVISED OF THE POSSIBILITY.</p>
+        <p>OUR TOTAL LIABILITY FOR ANY CLAIM SHALL NOT EXCEED THE AMOUNTS YOU PAID US FOR THE SOFTWARE IN THE TWELVE (12) MONTHS BEFORE THE CLAIM, OR ONE HUNDRED U.S. DOLLARS (US $100) IF YOU HAVE NOT PAID.</p>
+
+        <h2>6. High-risk activities</h2>
+        <p>You must not rely on the Software as the sole control system for life-critical, medical, emergency, weapons, aviation, or similarly high-risk domains.</p>
+
+        <h2>7. Acceptable use</h2>
+        <p>You must comply with our <a href="acceptable-use.html">Acceptable Use Policy</a> and all applicable laws and third-party terms.</p>
+
+        <h2>8. Accounts, plans, and billing</h2>
+        <p>Paid plans renew until cancelled. Managed model usage may be metered or capped; overages, if any, will be disclosed in product UI. BYOK usage is billed by your provider, not by us for tokens.</p>
+
+        <h2>9. Intellectual property</h2>
+        <p>We retain all rights in the Software, branding, and characters. You retain rights in your content and workflows. Feedback may be used to improve the product without obligation to you.</p>
+
+        <h2>10. Termination</h2>
+        <p>We may suspend or terminate access for violations of these Terms. You may stop using the Software and uninstall at any time. Sections that by nature should survive will survive termination.</p>
+
+        <h2>11. Governing law</h2>
+        <p>These Terms are governed by the laws of the State of Texas, USA, excluding conflict-of-law rules, unless mandatory consumer law in your jurisdiction requires otherwise. Venue for disputes shall be state or federal courts located in Texas, subject to applicable consumer protections.</p>
+
+        <h2>12. Changes</h2>
+        <p>We may update these Terms. Material changes will be indicated by updating the date above and, where appropriate, in-product notice. Continued use after changes constitutes acceptance.</p>
+
+        <h2>13. Contact</h2>
+        <p>Legal inquiries: legal@brandbyagent.com (or the contact published on brandbyagent.com).</p>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="../assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+      // fix relative links in footer for /legal/
+      document.querySelectorAll("#site-footer a, #site-header a").forEach((a) => {
+        const h = a.getAttribute("href") || "";
+        if (h && !h.startsWith("http") && !h.startsWith("#") && !h.startsWith("../") && !h.startsWith("legal/")) {
+          if (h.startsWith("legal/")) return;
+          a.setAttribute("href", "../" + h);
+        }
+      });
+    </script>
+    <script src="../assets/js/site.js"></script>
+  </body>
+</html>

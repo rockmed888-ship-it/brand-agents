@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agents — Brand by Agent</title>
+    <meta name="description" content="Dale Ray is the first Brand Agent. More characters coming." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Character roster</p>
+          <h1>Choose your Brand Agent</h1>
+          <p class="lead">
+            Dale Ray is the Windows connector. DD is the Android phone connector.
+            Same Grok brain. Separate hands.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card" style="border-color: rgba(94,234,212,.4)">
+            <div class="agent-avatar" style="margin-bottom:16px;width:72px;height:90px"></div>
+            <div class="badge">Available</div>
+            <h3>Dale Ray · computer Jarvis</h3>
+            <p>The Windows body. Same GLB character as the live site. Grok speaks through him. He works files, browsers, and apps. Send / pay / post still confirm on the PC.</p>
+            <p style="margin-top:16px"><a class="btn btn-primary" href="download.html">Download Dale Ray</a></p>
+          </article>
+          <article class="card" style="border-color: var(--accent-border)">
+            <div class="badge">Available · phone</div>
+            <h3>DD</h3>
+            <p>Android hands. Grok controls your phone as you. Overlay is Patch. Send / pay / post confirm on the phone. Not Dale.</p>
+            <p style="margin-top:16px"><a class="btn btn-primary" href="dd.html">Download DD for Android</a></p>
+          </article>
+          <article class="card">
+            <div class="num">Later</div>
+            <h3>Marketplace</h3>
+            <p>Community-created Brand Agents with review, permissions still enforced by the core runtime.</p>
+          </article>
+        </div>
+
+        <p style="margin-top: 32px"><a href="roadmap.html">Product roadmap →</a></p>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("agents.html");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+    </script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

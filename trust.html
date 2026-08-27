@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trust &amp; control — Brand by Agent</title>
+    <meta name="description" content="Autonomy levels, permissions, kill switch, and the Build Trust Tutorial for Brand Agents." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <main class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Trust &amp; control</p>
+          <h1>The agent never outruns the control you set.</h1>
+          <p class="lead">
+            Brand Agents act under your direction and autonomy settings. Permissions are
+            explicit. Autonomy starts conservative. You can stop everything instantly.
+          </p>
+        </div>
+
+        <div class="callout danger">
+          An agent with mouse and keyboard control can make mistakes. You accept that risk
+          when you grant input permission and raise autonomy. Review the
+          <a href="legal/disclaimer.html">risk disclaimer</a> before enabling control.
+        </div>
+
+        <h2 style="margin-top: 40px">Autonomy ladder</h2>
+        <p class="muted" style="margin-bottom: 20px">Default on first run: Observe only (or Suggest only if you opt in during setup).</p>
+        <div class="levels" id="levels">
+          <div class="level"><strong>1 · Observe</strong><p>Watches only after capture permission. No clicks, no typing. Reports what it sees.</p></div>
+          <div class="level"><strong>2 · Suggest</strong><p>Proposes next actions. You approve every step before anything runs.</p></div>
+          <div class="level"><strong>3 · Confirm each action</strong><p>May prepare multi-step plans; each click/type still needs your confirmation.</p></div>
+          <div class="level"><strong>4 · Limited autonomy</strong><p>Can complete short, scoped sequences you pre-approve (e.g. “save this file”).</p></div>
+          <div class="level"><strong>5 · Higher autonomy</strong><p>Longer multi-step work within caps you set. Kill switch and log still always on.</p></div>
+        </div>
+
+        <h2 id="tutorial" style="margin-top: 56px">Build Trust Tutorial</h2>
+        <p class="lead" style="margin-bottom: 24px">
+          A guided, interactive sequence—impossible to skip on first run—that teaches safe expansion of capability.
+        </p>
+        <div class="grid-2">
+          <article class="card"><div class="num">Step A</div><h3>Give a simple command</h3><p>Example: “What is on my screen?” at Observe level.</p></article>
+          <article class="card"><div class="num">Step B</div><h3>Review a suggestion</h3><p>See a proposed click or keystroke described in plain language before it happens.</p></article>
+          <article class="card"><div class="num">Step C</div><h3>Approve or deny</h3><p>Practice the confirmation gate. Denial is always one click.</p></article>
+          <article class="card"><div class="num">Step D</div><h3>Raise one level</h3><p>Only when ready—move from Suggest to Confirm, never jump to full autonomy by default.</p></article>
+          <article class="card"><div class="num">Step E</div><h3>Use the kill switch</h3><p>Global pause / emergency stop returns control to you immediately.</p></article>
+          <article class="card"><div class="num">Step F</div><h3>Open the action log</h3><p>Every decision and action is reviewable. Trust is earned and auditable.</p></article>
+        </div>
+
+        <h2 style="margin-top: 56px">Always-on safeguards</h2>
+        <div class="grid-3" style="margin-top: 20px">
+          <article class="card"><h3>Status bar</h3><p>Autonomy level + active permissions always visible.</p></article>
+          <article class="card"><h3>Kill switch</h3><p>Pause or full stop—no buried menus required.</p></article>
+          <article class="card"><h3>Revocation</h3><p>Drop permissions or autonomy anytime without reinstall.</p></article>
+        </div>
+
+        <p style="margin-top: 36px">
+          <a class="btn btn-primary" href="download.html#onboarding">See download &amp; permission gates</a>
+          <a class="btn btn-secondary" href="legal/disclaimer.html" style="margin-left:8px">Risk disclaimer</a>
+        </p>
+      </div>
+    </main>
+    <div id="site-footer"></div>
+    <script src="assets/js/partials.js"></script>
+    <script>
+      document.getElementById("site-header").innerHTML = brandHeader("trust.html");
+      document.getElementById("site-footer").innerHTML = brandFooter();
+    </script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

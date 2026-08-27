@@ -1,0 +1,7 @@
+assets/body/
+releases/*.apk
+releases/*.exe
+releases/*.zip
+.DS_Store
+Thumbs.db
+.netlify/

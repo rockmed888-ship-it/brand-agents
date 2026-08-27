@@ -1,0 +1,61 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/connect"
+  to = "/connect.html"
+  status = 200
+
+[[redirects]]
+  from = "/grok"
+  to = "/connect.html"
+  status = 200
+
+[[redirects]]
+  from = "/download"
+  to = "/download.html"
+  status = 200
+
+[[redirects]]
+  from = "/dd"
+  to = "/dd.html"
+  status = 200
+
+[[redirects]]
+  from = "/jarvis"
+  to = "/jarvis.html"
+  status = 200
+
+[[redirects]]
+  from = "/download/dd"
+  to = "/dd.html"
+  status = 200
+
+[[redirects]]
+  from = "/beedee"
+  to = "/beedee.html"
+  status = 200
+
+[[redirects]]
+  from = "/try"
+  to = "/try.html"
+  status = 200
+
+[[headers]]
+  for = "/releases/*.apk"
+  [headers.values]
+    Content-Type = "application/vnd.android.package-archive"
+    Content-Disposition = "attachment; filename=\"DD.apk\""
+
+[[headers]]
+  for = "/assets/body/*.glb"
+  [headers.values]
+    Content-Type = "model/gltf-binary"
+    Cache-Control = "public, max-age=86400"
