@@ -2,11 +2,10 @@
 function brandHeader(active) {
   const items = [
     ["index.html", "Home"],
-    ["download.html", "Apps"],
+    ["index.html#choose", "Choose"],
+    ["business.html", "Organizations"],
+    ["download.html", "Get"],
     ["connect.html", "Connector"],
-    ["download.html#phone", "Phone"],
-    ["pricing.html", "Pricing"],
-    ["trust.html", "Trust"],
   ];
   const links = items
     .map(
@@ -44,9 +43,10 @@ function brandFooter() {
         <div>
           <h4>Product</h4>
           <a href="index.html#choose">Choose your click</a>
-          <a href="agents.html">Dale Ray</a>
-          <a href="download.html#phone">Phone</a>
-          <a href="business.html">Business</a>
+          <a href="agents.html">Dale</a>
+          <a href="dd.html">DD</a>
+          <a href="beedee.html">BeeDee</a>
+          <a href="business.html">Organizations</a>
           <a href="pricing.html">Pricing</a>
           <a href="download.html">Download</a>
         </div>
