@@ -1,15 +1,11 @@
 /** Brand Agents — brandbyagent.com shared chrome */
 function brandHeader(active) {
   const items = [
-    ["index.html", "Product"],
-    ["business.html", "Business"],
-    ["how-it-works.html", "How it works"],
+    ["index.html", "Home"],
+    ["download.html", "Apps"],
+    ["connect.html", "Connector"],
+    ["dd.html", "Phone"],
     ["pricing.html", "Pricing"],
-    ["connect.html", "Grok connector"],
-    ["try.html", "Try"],
-    ["download.html", "Download"],
-    ["dd.html", "DD phone"],
-    ["beedee.html", "BeeDee"],
     ["trust.html", "Trust"],
   ];
   const links = items
@@ -19,17 +15,17 @@ function brandHeader(active) {
     )
     .join("");
   return `
-  <header class="site-header">
+  <header class="site-header store-chrome">
     <div class="container nav">
       <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span> Brand Agents</a>
+      <label class="store-search"><input data-store-search type="search" placeholder="Search apps" aria-label="Search apps" /></label>
       <button class="menu-btn" type="button" data-menu aria-label="Menu">Menu</button>
       <nav class="nav-links" data-nav-links>
         ${links}
-        <a href="about.html" data-nav class="${active === "about.html" ? "active" : ""}">About</a>
       </nav>
       <div class="nav-actions">
-        <a class="link-quiet" href="download.html#account">Sign in</a>
-        <a class="btn btn-primary" href="connect.html">Join the Click</a>
+        <button class="theme-toggle" type="button" data-theme-toggle title="Light or dark">◐</button>
+        <a class="btn btn-primary btn-get" href="connect.html">Join the Click</a>
       </div>
     </div>
   </header>`;
