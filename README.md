@@ -5,7 +5,7 @@
 | | |
 |--|--|
 | **Business name** | Brand Agents |
-| **Product** | Brand Agents — trainable desktop agents (first: Dale Ray) |
+| **Product** | Brand Agents — Join the Click (first Windows body: Dale Ray) |
 | **Domain** | brandbyagent.com *(domain only — preferred names were taken / high price)* |
 
 > This folder is the **website only**.  
@@ -38,4 +38,10 @@ Start-Process index.html
 
 ## Deploy
 
-Point **brandbyagent.com** DNS at your host and publish this folder as the site root.
+Live fallback: https://brand-agents.netlify.app  
+Apex `brandbyagent.com` when DNS is pointed at that Netlify site.
+
+```powershell
+cd "$env:USERPROFILE\OneDrive\Desktop\brandbyagent.com"
+npx netlify-cli deploy --prod --dir .
+```

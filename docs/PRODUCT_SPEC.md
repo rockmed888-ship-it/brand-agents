@@ -34,9 +34,11 @@ Brand Agents is a software company focused on AI-powered desktop agents.
 
 ## Lead positioning (homepage)
 
-**Primary:** A trainable desktop agent that works on your computer under your control.
+**Campaign:** Join the Click.
 
-**Secondary analogy only:** Jarvis-like — further down the page.
+**Primary:** Brand Agents. Join the Click. A named agent on your desk. It clicks. You stay on Send.
+
+Do not lead with butler / employee-on-a-computer analogies.
 
 ### Four homepage pillars
 

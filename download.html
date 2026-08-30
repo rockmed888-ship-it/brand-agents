@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Download Dale Ray or DD — Brand Agents</title>
+    <title>Download the working click — Brand Agents</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/site.css" />
   </head>
@@ -12,12 +12,12 @@
     <main class="section">
       <div class="container" style="max-width: 720px">
         <div class="section-head">
-          <p class="eyebrow">Download</p>
+          <p class="eyebrow">Join the Click</p>
           <h1>Download Dale or DD</h1>
           <p class="lead">
-            <strong>Dale</strong> = Windows hands. <strong>DD</strong> = Android hands.
-            Grok on the phone runs the PC. Grok on the PC runs the phone.
-            Next: <a href="connect.html">3 steps to hook Grok</a>.
+            Named body on Windows (today: Dale Ray). DD on Android. You stay on Send.
+            The Windows installer is a public file. The trial is how you get a Grok Server URL.
+            Next: <a href="connect.html">3 steps</a>.
           </p>
         </div>
 
@@ -27,12 +27,12 @@
           </p>
           <h3 style="margin-bottom:12px">DD for Android</h3>
           <p>
-            Hands on your phone. Overlay is Patch. Separate from Dale.
+            DD clicks on your phone. Overlay is Patch. Separate from Dale.
             Open the phone page and download the APK on ROMEO.
           </p>
           <p style="margin-top: var(--s3)">
             <a class="btn btn-primary btn-lg" href="dd.html">Get DD on your phone</a>
-            <a class="btn btn-secondary" href="/releases/DD.apk" style="margin-left:8px">DD.apk</a>
+            <a class="btn btn-secondary" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DD.apk" style="margin-left:8px">DD.apk</a>
           </p>
           <p class="soft" style="margin-top: var(--s2)">
             Scan from this PC: open <a href="try.html">the try page</a> on the phone, or tap the APK link in Chrome on the phone.
@@ -50,7 +50,7 @@
           </p>
           <p style="margin-top: var(--s3)">
             <a class="btn btn-primary btn-lg" href="beedee.html">Get BeeDee on your phone</a>
-            <a class="btn btn-secondary" href="/releases/BeeDee.apk" style="margin-left:8px">BeeDee.apk</a>
+            <a class="btn btn-secondary" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/BeeDee.apk" style="margin-left:8px">BeeDee.apk</a>
           </p>
         </div>
 
@@ -60,11 +60,11 @@
           <p>
             Download the installer, double-click <strong>DaleRaySetup.exe</strong>, install, and launch.
             No Node.js or developer tools required. 64-bit Windows only.
-            For Local mode, install <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> separately.
+            Local Ollama is optional and a separate install — not required if you use Grok, BYOK, or Managed.
           </p>
           <p style="margin-top: var(--s3)">
-            <a class="btn btn-primary btn-lg" id="dlBtn" href="connect.html">Start 3-day trial to download</a>
-            <a class="btn btn-secondary" href="connect.html" style="margin-left:8px">Get Grok token</a>
+            <a class="btn btn-primary btn-lg" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DaleRaySetup.exe">Download DaleRaySetup.exe</a>
+            <a class="btn btn-secondary" href="connect.html" style="margin-left:8px">Need a Grok Server URL? Start trial</a>
           </p>
           <p class="soft" style="margin-top: var(--s2)" id="dlNote">
             Consumer installer — Download → Install → Launch. Windows may show SmartScreen until code-signing is added; choose More info → Run anyway.
@@ -96,9 +96,15 @@
           <div class="title">On first launch (in-app)</div>
           <div class="perm-row"><span>Welcome &amp; risk framing</span><span class="ok">Required</span></div>
           <div class="perm-row"><span>Screen / mouse / keyboard / accessibility</span><span class="ok">Accept or decline each</span></div>
-          <div class="perm-row"><span>Autonomy level 1–5</span><span class="ok">Default: 1</span></div>
+          <div class="perm-row"><span>Autonomy level 1–5</span><span class="ok">You set the level</span></div>
           <div class="perm-row"><span>AI mode: Local · BYOK · Managed</span><span class="ok">Required</span></div>
+          <div class="perm-row"><span>Name your agent (default Dale)</span><span class="ok">Next Windows build</span></div>
         </div>
+        <p class="soft" style="margin-bottom: var(--s4)">
+          First run asks permissions and how it should think. Offscreen Send / Pay / Post wait on a confirm chip.
+          Grok desktop clicks are not yet level-gated. Next Windows build: desktop clicks wait for Allow once;
+          offscreen Send / Pay / Post still use the chip. Ordinary offscreen clicks stay ungated.
+        </p>
       </div>
     </main>
     <div id="site-footer"></div>
@@ -107,7 +113,7 @@
       document.getElementById("site-header").innerHTML = brandHeader("download.html");
       document.getElementById("site-footer").innerHTML = brandFooter();
       // Probe consumer installer
-      fetch("/releases/DaleRaySetup.exe", { method: "HEAD" })
+      fetch("https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DaleRaySetup.exe", { method: "HEAD" })
         .then((r) => {
           const note = document.getElementById("dlNote");
           if (r.ok) {

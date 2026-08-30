@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hands on PC and phone — Brand Agents</title>
+    <title>Join the Click — Brand Agents</title>
     <meta
       name="description"
       content="Grok on your phone runs your Windows PC. Grok on your PC runs your Android phone. One connector. Dale and DD."
@@ -14,19 +14,20 @@
     <div id="site-header"></div>
     <main class="section">
       <div class="container" style="max-width:720px">
-        <p class="eyebrow">One Grok. Two pairs of hands.</p>
+        <p class="eyebrow">Join the Click</p>
         <h1>Use Grok on either device. Drive the other.</h1>
         <p class="lead">
-          The product is permissioned automation through DD or BeeDee’s hands — and Dale on Windows.
-          Use the <strong>Grok app on your phone</strong> to run this phone. Same paste also lets Grok on the PC run the phone, and the phone Grok run the PC.
-          Send / Pay / Post still confirm on the device that acts.
+          Your mouse stays yours. In the offscreen browser, Send / Pay / Post wait for you.
+          Desktop Send is confirm-on-device when the job is only Send.
+          Next Windows build: desktop control tools wait for Allow once; send/post/pay tokens always confirm.
+          Ordinary offscreen clicks do not confirm.
         </p>
 
         <div class="card" style="margin-bottom:1.5rem">
           <h3>3 steps</h3>
           <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
             <li><strong>Get your link</strong> — start the trial below. This page then shows one Server URL.</li>
-            <li><strong>Install both hands</strong> — Dale on Windows, DD on Android. Leave them running.</li>
+            <li><strong>Install both bodies</strong> — Dale on Windows, DD on Android. Leave them running.</li>
             <li><strong>Paste once into Grok</strong> — phone app or grok.com → Connectors → New → Custom → paste the Server URL.</li>
           </ol>
         </div>
@@ -39,7 +40,7 @@
           <p>
             <button class="btn btn-primary btn-lg" type="button" id="payStarter">Start trial · get Server URL</button>
           </p>
-          <p class="soft" id="payNote">Downloads unlock after checkout.</p>
+          <p class="soft" id="payNote">The Windows installer is a public file. The trial is how you get a Grok Server URL.</p>
           <p class="soft" id="payErr" style="color:#f87171"></p>
         </div>
 
@@ -56,10 +57,10 @@
         </div>
 
         <div class="card" id="installCard" style="margin-bottom:1.5rem">
-          <h3>2 · Install the hands</h3>
+          <h3>2 · Install Dale and DD</h3>
           <p class="muted">You need both. Keep both running.</p>
           <p style="margin-top:0.85rem">
-            <a class="btn btn-primary" id="dlBtn" href="/releases/DaleRaySetup.exe">Dale for Windows</a>
+            <a class="btn btn-primary" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DaleRaySetup.exe">Dale for Windows</a>
             <a class="btn btn-secondary" id="ddBtn" href="dd.html" style="margin-left:8px">DD for Android</a>
           </p>
           <p class="soft" style="margin-top:0.75rem">
@@ -81,7 +82,7 @@
             <li><strong>Grok on the computer:</strong> “DD, open Messages.”</li>
             <li>On the phone: hold the pet to talk; double-tap the pet to stop. Repeats get faster as it remembers.</li>
           </ul>
-          <p class="soft">Dale = Windows hands. DD = Android hands. You keep Send, Pay, and Post. One Stop switch. Uninstall ends it.</p>
+          <p class="soft">Dale clicks on Windows. DD clicks on Android. You keep Send, Pay, and Post. One Stop switch. Uninstall ends it.</p>
         </div>
       </div>
     </main>
@@ -107,7 +108,7 @@
           (data.unlimited ? "Founder / unlimited. " : "Trial / paid for ") +
           (data.email || "your account") +
           ".";
-        document.getElementById("dlBtn").href = data.download_url || "/releases/DaleRaySetup.exe";
+        document.getElementById("dlBtn").href = data.download_url || "https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DaleRaySetup.exe";
         if (data.dd_apk_url) document.getElementById("ddBtn").href = data.dd_apk_url;
         document.getElementById("copyMcp").onclick = () =>
           copy(url, "Copied. Paste into Grok Custom connector AND into DD/BeeDee → Server URL.");

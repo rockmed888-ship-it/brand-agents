@@ -1,6 +1,9 @@
-# Technical Audit — Download, BYOK, Managed API (Brand Agents / Dale Ray)
+# SUPERSEDED — Technical Audit — Download, BYOK, Managed API
 
-**Date:** 2026-08-06  
+**Status:** Superseded 2026-08-30. Do not use this file to guide Join the Click or shipping.  
+The Windows installer is a public file (`releases/DaleRaySetup.exe`). Campaign: Join the Click. See `docs/JOIN-THE-CLICK-PLAN.md` and `DaleRay/docs/PRODUCTION_READINESS.md`.
+
+**Original date:** 2026-08-06  
 **Method:** Code inspection + runtime smoke (local backend, live download HTML)
 
 ---

@@ -1,7 +1,7 @@
 /**
- * Dale Ray — computer Jarvis on the marketing site.
- * Same GLB body as the Windows desktop agent.
- * 3D loads only on click so the page works without a 56MB download.
+ * Dale Ray body on the marketing site.
+ * Same GLB as the Windows desktop agent (~4.94 MB).
+ * 3D loads only on click so the page first-paints without the file.
  */
 const BODY = "./assets/body/dale-ray.glb";
 
@@ -83,7 +83,7 @@ export function mountDaleHero(canvas, statusEl, opts = {}) {
       if (activeAction && activeAction !== action) activeAction.fadeOut(0.2);
       action.fadeIn(0.2).play();
       activeAction = action;
-      setStatus(state === "idle" ? "Dale Ray · computer Jarvis" : state);
+      setStatus(state === "idle" ? "Dale Ray · on the desk" : state);
     }
 
     function frame() {
@@ -137,7 +137,7 @@ export function mountDaleHero(canvas, statusEl, opts = {}) {
     frame();
   }
 
-  setStatus("Computer Jarvis — click to load 3D");
+  setStatus("Click to load 3D");
   if (btn) {
     btn.addEventListener("click", () => {
       boot().catch((err) => {

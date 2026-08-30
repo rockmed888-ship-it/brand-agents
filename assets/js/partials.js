@@ -29,7 +29,7 @@ function brandHeader(active) {
       </nav>
       <div class="nav-actions">
         <a class="link-quiet" href="download.html#account">Sign in</a>
-        <a class="btn btn-primary" href="connect.html">Get hands</a>
+        <a class="btn btn-primary" href="connect.html">Join the Click</a>
       </div>
     </div>
   </header>`;
@@ -42,8 +42,8 @@ function brandFooter() {
       <div class="footer-grid">
         <div>
           <a class="brand" href="index.html"><span class="brand-mark"></span> Brand Agents</a>
-          <p class="footer-note">Grok is the brain. Dale Ray is computer Jarvis. DD is phone Jarvis. You keep Send, Pay, and Post.</p>
-          <p class="footer-note">brandbyagent.com</p>
+          <p class="footer-note">Grok is the brain. They click for you. You keep Send, Pay, and Post.</p>
+          <p class="footer-note">brandbyagent.com · they click for you</p>
         </div>
         <div>
           <h4>Product</h4>
@@ -56,7 +56,7 @@ function brandFooter() {
         <div>
           <h4>Resources</h4>
           <a href="how-it-works.html">How it works</a>
-          <a href="trust.html#tutorial">Trust tutorial</a>
+          <a href="trust.html">Trust</a>
           <a href="compare.html">Why Brand Agents</a>
           <a href="roadmap.html">Roadmap</a>
         </div>

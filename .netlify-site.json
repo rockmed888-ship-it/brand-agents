@@ -1,9 +1,11 @@
 {
   "netlify_name": "brand-agents",
-  "custom_domain_status": "attached_on_Netlify_but_domain_UNREGISTERED_RDAP_404",
+  "custom_domain_status": "brandbyagent.com still UNREGISTERED — do not share it",
   "business": "Brand Agents",
   "domain_target": "brandbyagent.com",
+  "working_public_url": "https://rockmed888-ship-it.github.io/brand-agents/",
   "site_id": "b07d64ee-8900-41bf-8a7b-0bcd9fc17097",
   "admin_url": "https://app.netlify.com/projects/brand-agents",
-  "production_url": "https://brand-agents.netlify.app"
+  "production_url": "https://brand-agents.netlify.app",
+  "note": "Share the GitHub Pages URL until brandbyagent.com is registered. Never brandbyagents.com."
 }
