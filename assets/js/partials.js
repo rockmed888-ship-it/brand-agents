@@ -5,6 +5,7 @@ function brandHeader(active) {
     ["index.html#choose", "Choose"],
     ["business.html", "Organizations"],
     ["download.html", "Get"],
+    ["try.html", "Try"],
     ["connect.html", "Connector"],
   ];
   const links = items

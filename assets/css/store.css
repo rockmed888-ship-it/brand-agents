@@ -194,6 +194,14 @@ html[data-theme="light"] body.store {
   width: 100%;
   background: #111;
 }
+.tile-idle {
+  background-color: #07090d;
+  background-repeat: no-repeat;
+  background-size: 800% auto;
+  background-position: 0 0;
+}
+.tile-idle.dd { background-image: url("../body/dd-spritesheet.webp"); }
+.tile-idle.beedee { background-image: url("../body/beedee-spritesheet.webp"); }
 .tile .meta {
   padding: 12px 14px 14px;
   display: flex;

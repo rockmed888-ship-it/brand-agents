@@ -244,13 +244,28 @@ function mountCard(el, agent, saved) {
       el.querySelectorAll("[data-device]").forEach((b) => b.classList.toggle("on", b === btn));
     });
   });
+  function downloadChosen(all) {
+    const payload = {
+      version: 1,
+      put: "Copy to Dale office/files/CHOSEN-AGENT.json (Windows). Phone: keep this file in Downloads.",
+      active: agent.id,
+      agents: all,
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "CHOSEN-AGENT.json";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
   el.querySelector("[data-save]").addEventListener("click", () => {
     const all = loadAll();
     const n = (nameInput.value || agent.suggested).trim().slice(0, 24);
     all[agent.id] = { name: n, device: deviceNow, body: agent.id, at: Date.now() };
     saveAll(all);
-    savedEl.textContent = `${n} · ${deviceNow}`;
+    savedEl.textContent = `${n} · ${deviceNow} · file downloaded`;
     nameInput.value = n;
+    downloadChosen(all);
   });
   if (saved?.name) savedEl.textContent = `${saved.name} · ${saved.device}`;
 

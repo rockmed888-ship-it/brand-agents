@@ -140,16 +140,25 @@
             </article>
             <article class="card">
               <h3>Request a walkthrough</h3>
-              <p>
-                Email team size, the system (Salesforce, in-house, mail, listings — whatever is live),
-                and the one task you want consistent.
-              </p>
-              <p style="margin-top: var(--s3)">
-                <a class="btn btn-primary" href="mailto:demo@brandbyagent.com?subject=Systems%20walkthrough%20%E2%80%94%20train%20the%20click">Book a systems walkthrough</a>
-              </p>
-              <p class="soft" style="margin-top: var(--s2)">
-                We do this on your computers. Pause and stop stay in the room.
-              </p>
+              <form id="walkForm" style="display:grid;gap:8px;margin-top:12px">
+                <input name="name" placeholder="Your name" required style="height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:16px" />
+                <input name="email" type="email" placeholder="Work email" required style="height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:16px" />
+                <input name="company" placeholder="Organization" style="height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:16px" />
+                <input name="seats" placeholder="Seats (approx)" style="height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:16px" />
+                <input name="system" placeholder="System (CRM, claims, listings…)" style="height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:16px" />
+                <textarea name="task" required placeholder="The one task that must be the same every time" rows="3" style="padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:16px"></textarea>
+                <select name="body" style="height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:16px">
+                  <option value="dale">Dale</option>
+                  <option value="dd">DD</option>
+                  <option value="beedee">BeeDee</option>
+                </select>
+                <select name="device" style="height:44px;padding:0 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:16px">
+                  <option value="computer">Computer</option>
+                  <option value="phone">Phone</option>
+                </select>
+                <button class="btn btn-primary" type="submit">Send request</button>
+                <p class="soft" id="walkNote">We do this on your computers. Pause and stop stay in the room.</p>
+              </form>
             </article>
           </div>
         </div>
@@ -175,5 +184,44 @@
       document.getElementById("site-footer").innerHTML = brandFooter();
     </script>
     <script src="assets/js/site.js"></script>
+    <script>
+      const form = document.getElementById("walkForm");
+      if (form) {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const fd = new FormData(form);
+          const body = Object.fromEntries(fd.entries());
+          const note = document.getElementById("walkNote");
+          try {
+            const r = await fetch("https://brand-agents-api-production.up.railway.app/v1/walkthrough", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(body),
+            });
+            if (r.ok) {
+              note.textContent = "Received. We’ll come back with a walkthrough time.";
+              form.reset();
+              return;
+            }
+          } catch (_) {}
+          const lines = [
+            "Systems walkthrough request",
+            "Name: " + body.name,
+            "Email: " + body.email,
+            "Org: " + body.company,
+            "Seats: " + body.seats,
+            "System: " + body.system,
+            "Task: " + body.task,
+            "Body: " + body.body,
+            "Device: " + body.device,
+          ];
+          location.href =
+            "mailto:rockmed888@gmail.com?subject=" +
+            encodeURIComponent("Systems walkthrough — train the click") +
+            "&body=" +
+            encodeURIComponent(lines.join("\n"));
+        });
+      }
+    </script>
   </body>
 </html>

@@ -6,7 +6,7 @@
     <title>Join the Click — Brand Agents</title>
     <meta
       name="description"
-      content="Grok on your phone runs your Windows PC. Grok on your PC runs your Android phone. One connector. Dale and DD."
+      content="Grok Voice and text. One Server URL. Dale, DD, or BeeDee on computer or phone."
     />
     <link rel="stylesheet" href="assets/css/site.css" />
   </head>
@@ -27,8 +27,8 @@
           <h3>3 steps</h3>
           <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
             <li><strong>Get your link</strong> — start the trial below. This page then shows one Server URL.</li>
-            <li><strong>Install both bodies</strong> — Dale on Windows, DD on Android. Leave them running.</li>
-            <li><strong>Paste once into Grok</strong> — phone app or grok.com → Connectors → New → Custom → paste the Server URL.</li>
+            <li><strong>Install a body</strong> — Dale, DD, or BeeDee. Computer or phone. Leave it running.</li>
+            <li><strong>Paste once into Grok</strong> — Voice, phone app, or grok.com → Connectors → New → Custom → paste the Server URL (token is in the path).</li>
           </ol>
         </div>
 
@@ -51,38 +51,39 @@
           <button class="btn btn-primary" type="button" id="copyMcp">Copy Server URL</button>
           <p class="soft" id="copyMsg" style="margin-top:0.75rem"></p>
           <p class="soft" style="margin-top:0.75rem">
-            Paste this <strong>same line</strong> in two places: (1) Grok app → Connectors → Custom.
-            (2) DD or BeeDee → Server URL → Save. Do not split it. Do not add a query string.
+            This is the <strong>Grok Voice URL</strong>. Name + URL only. Token is already in the path
+            (<code>/mcp/p/…</code>). Paste it in grok.com/connectors → Custom, and in the phone app → Server URL.
           </p>
         </div>
 
         <div class="card" id="installCard" style="margin-bottom:1.5rem">
-          <h3>2 · Install Dale and DD</h3>
-          <p class="muted">You need both. Keep both running.</p>
-          <p style="margin-top:0.85rem">
-            <a class="btn btn-primary" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe">Dale for Windows</a>
-            <a class="btn btn-secondary" id="ddBtn" href="dd.html" style="margin-left:8px">DD for Android</a>
+          <h3>2 · Install Dale, DD, or BeeDee</h3>
+          <p class="muted">Pick a body. Computer or phone. Name it on <a href="index.html#choose">Choose your click</a>.</p>
+          <p style="margin-top:0.85rem;display:flex;flex-wrap:wrap;gap:8px">
+            <a class="btn btn-primary" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe">Dale · Windows</a>
+            <a class="btn btn-secondary" id="ddBtn" href="releases/DD.apk">DD · Android</a>
+            <a class="btn btn-secondary" id="beedeeBtn" href="releases/BeeDee.apk">BeeDee · Android</a>
           </p>
           <p class="soft" style="margin-top:0.75rem">
-            Windows: install Dale → if SmartScreen appears, More info → Run anyway → launch → leave it on.<br />
-            Phone: open <a href="dd.html">/dd</a> in Chrome → Allow Chrome to install this app → Overlay + Accessibility → Start DD.
+            Windows: install Dale → SmartScreen → More info → Run anyway → launch → leave it on.<br />
+            Phone: open this page in Chrome → allow install → Overlay + Accessibility → Start.
+            Drop <code>CHOSEN-AGENT.json</code> in Dale’s office/files so the name sticks.
           </p>
         </div>
 
         <div class="card" id="grokSteps" style="margin-bottom:1.5rem">
-          <h3>3 · Hook Grok (app or computer — same)</h3>
+          <h3>3 · Hook Grok Voice (same for text)</h3>
           <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
-            <li>Open <a href="https://grok.com/connectors" target="_blank" rel="noopener">grok.com/connectors</a> (works in the Grok phone app too).</li>
-            <li>New Connector → <strong>Custom</strong>. Name it <strong>Dale + DD</strong>.</li>
-            <li>Paste the Server URL from this page. There is no Bearer or token field — the URL is enough. Save.</li>
+            <li>Open <a href="https://grok.com/connectors" target="_blank" rel="noopener">grok.com/connectors</a> (phone Voice uses this too).</li>
+            <li>New Connector → <strong>Custom</strong>. Name it <strong>Dale Ray</strong>.</li>
+            <li>Paste the Server URL. No Bearer field. If the URL is only <code>/mcp</code> without <code>/p/…</code>, it will not attach to your PC.</li>
           </ol>
           <h3 style="margin-top:1.25rem">You are connected when the other device moves</h3>
           <ul class="muted" style="padding-left:1.2rem;line-height:1.7">
-            <li><strong>Grok app on your phone:</strong> “DD, open Messages.” (or BeeDee — same tools). Also: “Dale, open Notepad.”</li>
-            <li><strong>Grok on the computer:</strong> “DD, open Messages.”</li>
-            <li>On the phone: hold the pet to talk; double-tap the pet to stop. Repeats get faster as it remembers.</li>
+            <li>Voice or text: “Dale, open Notepad.” “DD, open Messages.” “BeeDee, open Gmail.”</li>
+            <li>On the phone: hold the pet to talk; double-tap to stop.</li>
           </ul>
-          <p class="soft">Dale clicks on Windows. DD clicks on Android. You keep Send, Pay, and Post. One Stop switch. Uninstall ends it.</p>
+          <p class="soft">You keep Send, Pay, and Post. One Stop switch. Uninstall ends it.</p>
         </div>
       </div>
     </main>
@@ -92,7 +93,13 @@
       document.getElementById("site-header").innerHTML = brandHeader("connect.html");
       document.getElementById("site-footer").innerHTML = brandFooter();
       const API = "https://brand-agents-api-production.up.railway.app";
-      const MCP = "https://brand-agents-api-production.up.railway.app/mcp";
+      function voiceUrl(data) {
+        const t = String(data?.pairing_token || "").trim();
+        if (t) return API + "/mcp/p/" + t;
+        const u = String(data?.mcp_url || "");
+        if (/\/mcp\/p\//.test(u)) return u;
+        return u;
+      }
       function copy(text, ok) {
         navigator.clipboard.writeText(text).then(
           () => { document.getElementById("copyMsg").textContent = ok; },
@@ -102,7 +109,7 @@
       function showUnlocked(data) {
         document.getElementById("locked").style.display = "none";
         document.getElementById("unlocked").style.display = "block";
-        const url = data.mcp_url || MCP;
+        const url = voiceUrl(data);
         document.getElementById("mcpUrl").textContent = url;
         document.getElementById("unlockEmail").textContent =
           (data.unlimited ? "Founder / unlimited. " : "Trial / paid for ") +
@@ -110,8 +117,9 @@
           ".";
         document.getElementById("dlBtn").href = data.download_url || "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe";
         if (data.dd_apk_url) document.getElementById("ddBtn").href = data.dd_apk_url;
+        if (data.beedee_apk_url) document.getElementById("beedeeBtn").href = data.beedee_apk_url;
         document.getElementById("copyMcp").onclick = () =>
-          copy(url, "Copied. Paste into Grok Custom connector AND into DD/BeeDee → Server URL.");
+          copy(url, "Copied. Paste into Grok Voice → Custom connector (Name + this URL).");
       }
       const params = new URLSearchParams(location.search);
       const note = document.getElementById("payNote");
