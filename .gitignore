@@ -1,4 +1,3 @@
-releases/*.apk
 releases/*.exe
 releases/*.zip
 .DS_Store

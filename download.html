@@ -32,7 +32,7 @@
           </p>
           <p style="margin-top: var(--s3)">
             <a class="btn btn-primary btn-lg" href="dd.html">Get DD on your phone</a>
-            <a class="btn btn-secondary" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DD.apk" style="margin-left:8px">DD.apk</a>
+            <a class="btn btn-secondary" href="releases/DD.apk" style="margin-left:8px">DD.apk</a>
           </p>
           <p class="soft" style="margin-top: var(--s2)">
             Scan from this PC: open <a href="try.html">the try page</a> on the phone, or tap the APK link in Chrome on the phone.
@@ -50,7 +50,7 @@
           </p>
           <p style="margin-top: var(--s3)">
             <a class="btn btn-primary btn-lg" href="beedee.html">Get BeeDee on your phone</a>
-            <a class="btn btn-secondary" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/BeeDee.apk" style="margin-left:8px">BeeDee.apk</a>
+            <a class="btn btn-secondary" href="releases/BeeDee.apk" style="margin-left:8px">BeeDee.apk</a>
           </p>
         </div>
 
@@ -63,11 +63,13 @@
             Local Ollama is optional and a separate install — not required if you use Grok, BYOK, or Managed.
           </p>
           <p style="margin-top: var(--s3)">
-            <a class="btn btn-primary btn-lg" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DaleRaySetup.exe">Download DaleRaySetup.exe</a>
+            <a class="btn btn-primary btn-lg" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe">Download DaleRaySetup.exe</a>
             <a class="btn btn-secondary" href="connect.html" style="margin-left:8px">Need a Grok Server URL? Start trial</a>
           </p>
           <p class="soft" style="margin-top: var(--s2)" id="dlNote">
-            Consumer installer — Download → Install → Launch. Windows may show SmartScreen until code-signing is added; choose More info → Run anyway.
+            That button opens GitHub and downloads the Windows installer (231 MB). If it does not start, use
+            <a href="https://github.com/rockmed888-ship-it/brand-agents/releases/tag/click-1">the Join the Click release</a>.
+            SmartScreen: More info → Run anyway.
           </p>
           <p class="soft" style="margin-top: var(--s2)">macOS — coming next.</p>
         </div>
@@ -112,20 +114,6 @@
     <script>
       document.getElementById("site-header").innerHTML = brandHeader("download.html");
       document.getElementById("site-footer").innerHTML = brandFooter();
-      // Probe consumer installer
-      fetch("https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DaleRaySetup.exe", { method: "HEAD" })
-        .then((r) => {
-          const note = document.getElementById("dlNote");
-          if (r.ok) {
-            note.textContent =
-              "Installer is ready. Download → double-click → install → launch. No Node.js required.";
-          } else {
-            note.textContent =
-              "Installer not on this host yet — upload DaleRaySetup.exe to /releases/.";
-            document.getElementById("dlBtn").href = "#account";
-          }
-        })
-        .catch(() => {});
     </script>
     <script src="assets/js/site.js"></script>
   </body>

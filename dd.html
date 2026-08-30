@@ -28,7 +28,7 @@
             <li>Open DD → allow “run in background” if asked → <strong>Start DD</strong>. Leave the notification on.</li>
           </ol>
           <p style="margin-top: var(--s3)">
-            <a class="btn btn-primary btn-lg" id="apkBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DD.apk">Download DD.apk</a>
+            <a class="btn btn-primary btn-lg" id="apkBtn" href="releases/DD.apk">Download DD.apk</a>
           </p>
           <p class="soft" style="margin-top: var(--s2)" id="apkNote">Allow Chrome to install this app. Send, pay, and post still confirm on this phone.</p>
         </div>
@@ -40,12 +40,7 @@
     <script>
       document.getElementById("site-header").innerHTML = brandHeader("dd.html");
       document.getElementById("site-footer").innerHTML = brandFooter();
-      fetch("https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DD.apk", { method: "HEAD" })
-        .then((r) => {
-          const note = document.getElementById("apkNote");
-          if (r.ok) note.textContent = "APK ready. Tap Download, then Allow install.";
-        })
-        .catch(() => {});
+
     </script>
     <script src="assets/js/site.js"></script>
   </body>

@@ -60,7 +60,7 @@
           <h3>2 · Install Dale and DD</h3>
           <p class="muted">You need both. Keep both running.</p>
           <p style="margin-top:0.85rem">
-            <a class="btn btn-primary" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DaleRaySetup.exe">Dale for Windows</a>
+            <a class="btn btn-primary" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe">Dale for Windows</a>
             <a class="btn btn-secondary" id="ddBtn" href="dd.html" style="margin-left:8px">DD for Android</a>
           </p>
           <p class="soft" style="margin-top:0.75rem">
@@ -108,7 +108,7 @@
           (data.unlimited ? "Founder / unlimited. " : "Trial / paid for ") +
           (data.email || "your account") +
           ".";
-        document.getElementById("dlBtn").href = data.download_url || "https://github.com/rockmed888-ship-it/brand-agents/releases/latest/download/DaleRaySetup.exe";
+        document.getElementById("dlBtn").href = data.download_url || "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe";
         if (data.dd_apk_url) document.getElementById("ddBtn").href = data.dd_apk_url;
         document.getElementById("copyMcp").onclick = () =>
           copy(url, "Copied. Paste into Grok Custom connector AND into DD/BeeDee → Server URL.");
