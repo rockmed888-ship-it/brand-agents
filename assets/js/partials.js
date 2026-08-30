@@ -4,7 +4,7 @@ function brandHeader(active) {
     ["index.html", "Home"],
     ["download.html", "Apps"],
     ["connect.html", "Connector"],
-    ["dd.html", "Phone"],
+    ["download.html#phone", "Phone"],
     ["pricing.html", "Pricing"],
     ["trust.html", "Trust"],
   ];
@@ -43,8 +43,9 @@ function brandFooter() {
         </div>
         <div>
           <h4>Product</h4>
+          <a href="index.html#choose">Choose your click</a>
           <a href="agents.html">Dale Ray</a>
-          <a href="dd.html">DD phone</a>
+          <a href="download.html#phone">Phone</a>
           <a href="business.html">Business</a>
           <a href="pricing.html">Pricing</a>
           <a href="download.html">Download</a>

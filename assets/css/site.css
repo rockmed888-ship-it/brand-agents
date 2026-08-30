@@ -80,6 +80,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 100;
+  padding-top: env(safe-area-inset-top, 0px);
   background: rgba(11, 13, 16, 0.92);
   border-bottom: 1px solid var(--border-soft);
   backdrop-filter: blur(12px);
@@ -90,6 +91,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   gap: var(--s3);
   min-height: 56px;
   padding: var(--s2) 0;
+  position: relative;
 }
 .brand {
   display: inline-flex;
@@ -836,11 +838,14 @@ table.compare tr:last-child td { border-bottom: 0; }
     position: absolute;
     left: 0;
     right: 0;
-    top: 56px;
-    background: var(--bg);
+    top: 100%;
+    z-index: 130;
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     padding: var(--s3);
   }
+  .nav-actions { margin-left: auto; }
   .menu-btn { display: inline-flex; }
   .nav-actions .link-quiet { display: none; }
 }
