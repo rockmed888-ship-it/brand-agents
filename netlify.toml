@@ -49,10 +49,16 @@
   status = 200
 
 [[headers]]
-  for = "/releases/*.apk"
+  for = "/releases/DD.apk"
   [headers.values]
     Content-Type = "application/vnd.android.package-archive"
     Content-Disposition = "attachment; filename=\"DD.apk\""
+
+[[headers]]
+  for = "/releases/BeeDee.apk"
+  [headers.values]
+    Content-Type = "application/vnd.android.package-archive"
+    Content-Disposition = "attachment; filename=\"BeeDee.apk\""
 
 [[headers]]
   for = "/assets/body/*.glb"

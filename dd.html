@@ -2,45 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DD for Android — Brand Agents</title>
-    <meta name="description" content="Install DD on your phone. Grok on the computer clicks through this phone. Overlay is Patch." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Patch for Android — Brand Agents</title>
+    <meta name="description" content="Install Patch on your phone. Grok clicks through this phone. Overlay is Patch." />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/site.css" />
   </head>
-  <body>
+  <body class="store">
     <div id="site-header"></div>
-    <main class="section">
-      <div class="container" style="max-width: 720px">
-        <div class="section-head">
+    <main class="flow-wrap">
+      <div class="flow-hero">
+        <img class="face" src="assets/body/patch-face.jpg" alt="Patch" />
+        <div>
           <p class="eyebrow">Join the Click · Android</p>
-          <h1>Install DD on this phone</h1>
+          <h1>Install Patch on this phone</h1>
           <p class="lead">
-            Open this page <em>on the phone</em>. After Start DD, the <strong>Grok app on this phone</strong> clicks here.
+            Open this page <em>on the phone</em>. After Start, the <strong>Grok app on this phone</strong> clicks here.
             Hold the pet to talk. Double-tap to stop. Overlay is Patch.
           </p>
         </div>
-        <div class="card" style="margin-bottom: var(--s4)">
-          <h3>3 taps</h3>
-          <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
-            <li>Download and install <strong>DD.apk</strong>. Allow Chrome to install this app — Play does not allow this kind of helper yet.</li>
-            <li>Allow Overlay (Patch sits on screen so you can see when DD is working — not ads). Settings → Accessibility → <strong>DD</strong> → on.</li>
-            <li>Open DD → allow “run in background” if asked → <strong>Start DD</strong>. Leave the notification on.</li>
-          </ol>
-          <p style="margin-top: var(--s3)">
-            <a class="btn btn-primary btn-lg" id="apkBtn" href="releases/DD.apk">Download DD.apk</a>
-          </p>
-          <p class="soft" style="margin-top: var(--s2)" id="apkNote">Allow Chrome to install this app. Send, pay, and post still confirm on this phone.</p>
-        </div>
-        <p><a class="text-link" href="connect.html">← Back to the 3 steps (PC + phone + Grok)</a></p>
       </div>
+      <div class="flow-card">
+        <h3>3 taps</h3>
+        <ol class="flow-ol">
+          <li>Download and install Patch. Allow Chrome to install this app — Play does not allow this kind of helper yet.</li>
+          <li>Allow Overlay (Patch sits on screen so you can see when they are working — not ads). Settings → Accessibility → <strong>Patch</strong> → on.</li>
+          <li>Open Patch → allow “run in background” if asked → <strong>Start</strong>. Leave the notification on.</li>
+        </ol>
+        <div class="btn-row">
+          <a class="btn btn-primary btn-lg" id="apkBtn" href="releases/DD.apk">Download Patch for Android</a>
+        </div>
+        <p class="soft" id="apkNote">Allow Chrome to install this app. Send, pay, and post still confirm on this phone.</p>
+      </div>
+      <p><a class="text-link" href="connect.html">← Back to the 3 steps (computer + phone + Grok)</a></p>
     </main>
     <div id="site-footer"></div>
     <script src="assets/js/partials.js"></script>
     <script>
       document.getElementById("site-header").innerHTML = brandHeader("dd.html");
       document.getElementById("site-footer").innerHTML = brandFooter();
-
     </script>
     <script src="assets/js/site.js"></script>
   </body>

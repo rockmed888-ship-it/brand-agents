@@ -2,102 +2,132 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Download the working click — Brand Agents</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Download Brand Agents — Patch and BeeDee</title>
+    <meta
+      name="description"
+      content="Brand Agents for Windows with Patch. Patch and BeeDee on Android. Same click pets, both devices."
+    />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/site.css" />
   </head>
-  <body>
+  <body class="store">
     <div id="site-header"></div>
-    <main class="section">
-      <div class="container" style="max-width: 720px">
-        <div class="section-head">
-          <p class="eyebrow">Join the Click</p>
-          <h1>Download Dale, DD, or BeeDee</h1>
+    <main>
+      <section class="store-hero portrait static" aria-label="Patch">
+        <img src="assets/body/patch-face.jpg" alt="Patch, the Brand Agents click pet" />
+        <div class="acrylic">
+          <span class="live-chip">Live · Patch</span>
+          <p class="kicker">Get · Join the Click</p>
+          <h1>Same pets. Phone or computer.</h1>
           <p class="lead">
-            Each body works on computer or phone. You name them in Choose your click.
-            You stay on Send. Next: <a href="connect.html">3 steps</a>.
+            Grok is the brain. Patch and BeeDee are the click pets. Brand Agents for Windows
+            puts Patch on the desk — console to Start, save info, save memories.
+            Android is the same pets.
           </p>
+          <div class="hero-actions">
+            <a
+              class="btn btn-lg btn-get"
+              id="dlBtn"
+              href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe"
+              >Brand Agents for Windows</a
+            >
+            <a class="btn btn-secondary" href="connect.html">Get Server URL</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="flow-wrap">
+        <div class="dl-grid">
+          <article class="flow-card dl-card" id="windows">
+            <img class="face" src="assets/body/patch-face.jpg" alt="" />
+            <div>
+              <p class="eyebrow">Windows x64</p>
+              <h3>Brand Agents for Windows</h3>
+              <p>
+                Patch sits on the desk. Console to Start, save info, save memories.
+                Name Patch or BeeDee in <a href="index.html#choose">Choose your click</a>.
+                64-bit Windows. No Node.js. Local Ollama is optional.
+              </p>
+              <div class="btn-row">
+                <a
+                  class="btn btn-primary btn-lg"
+                  href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe"
+                  >Download Brand Agents for Windows</a
+                >
+              </div>
+              <p class="soft">
+                Opens GitHub and downloads the Windows installer (231 MB). If it does not start, use
+                <a href="https://github.com/rockmed888-ship-it/brand-agents/releases/tag/click-1">the Join the Click release</a>.
+                SmartScreen: More info → Run anyway. macOS — coming next.
+              </p>
+            </div>
+          </article>
+
+          <article class="flow-card dl-card" id="patch">
+            <img class="face" src="assets/store/tile-patch.jpg" alt="" />
+            <div>
+              <p class="eyebrow">Android · Patch</p>
+              <h3>Patch</h3>
+              <p>
+                Same pet as Windows. Open this page on the phone to install.
+                Overlay so you can see Patch working. Hold to talk. Double-tap to stop.
+              </p>
+              <div class="btn-row">
+                <a class="btn btn-primary btn-lg" href="releases/DD.apk">Download Patch for Android</a>
+                <a class="btn btn-secondary" href="dd.html">Install steps</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="flow-card dl-card" id="beedee">
+            <img class="face" src="assets/body/beedee-face.webp" alt="" />
+            <div>
+              <p class="eyebrow">Android · BeeDee</p>
+              <h3>BeeDee</h3>
+              <p>
+                Same tools as Patch. White fox, pink dress, sparkles.
+                Computer or phone — name them on the storefront.
+              </p>
+              <div class="btn-row">
+                <a class="btn btn-primary btn-lg" href="releases/BeeDee.apk">Download BeeDee for Android</a>
+                <a class="btn btn-secondary" href="beedee.html">Install steps</a>
+              </div>
+            </div>
+          </article>
         </div>
 
-        <div class="card" id="phone" style="margin-bottom: var(--s4); border-color: var(--accent-border); scroll-margin-top: 76px">
-          <p class="tier" style="margin:0 0 8px;color:var(--secondary);font-size:13px;font-weight:600">
-            Android · DD
-          </p>
-          <h3 style="margin-bottom:12px">DD</h3>
-          <p>
-            DD’s body. Phone or computer. Name them on the storefront.
-            Open this page on the phone to install.
-          </p>
-          <p style="margin-top: var(--s3)">
-            <a class="btn btn-primary btn-lg" href="releases/DD.apk">Download DD.apk</a>
-            <a class="btn btn-secondary" href="dd.html" style="margin-left:8px">DD install</a>
-          </p>
-        </div>
-
-        <div class="card" style="margin-bottom: var(--s4); border-color: var(--accent-border)">
-          <p class="tier" style="margin:0 0 8px;color:var(--secondary);font-size:13px;font-weight:600">
-            Android · BeeDee
-          </p>
-          <h3 style="margin-bottom:12px">BeeDee</h3>
-          <p>
-            BeeDee’s body. Phone or computer. Name them on the storefront.
-          </p>
-          <p style="margin-top: var(--s3)">
-            <a class="btn btn-primary btn-lg" href="releases/BeeDee.apk">Download BeeDee.apk</a>
-            <a class="btn btn-secondary" href="beedee.html" style="margin-left:8px">BeeDee install</a>
-          </p>
-        </div>
-
-        <div class="card" style="margin-bottom: var(--s4)">
-          <p class="tier" style="margin:0 0 8px;color:var(--secondary);font-size:13px;font-weight:600">Windows x64 · Installer</p>
-          <h3 style="margin-bottom:12px">Dale Ray for Windows</h3>
-          <p>
-            Download the installer, double-click <strong>DaleRaySetup.exe</strong>, install, and launch.
-            No Node.js or developer tools required. 64-bit Windows only.
-            Local Ollama is optional and a separate install — not required if you use Grok, BYOK, or Managed.
-          </p>
-          <p style="margin-top: var(--s3)">
-            <a class="btn btn-primary btn-lg" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe">Download DaleRaySetup.exe</a>
-            <a class="btn btn-secondary" href="connect.html" style="margin-left:8px">Need a Grok Server URL? Start trial</a>
-          </p>
-          <p class="soft" style="margin-top: var(--s2)" id="dlNote">
-            That button opens GitHub and downloads the Windows installer (231 MB). If it does not start, use
-            <a href="https://github.com/rockmed888-ship-it/brand-agents/releases/tag/click-1">the Join the Click release</a>.
-            SmartScreen: More info → Run anyway.
-          </p>
-          <p class="soft" style="margin-top: var(--s2)">macOS — coming next.</p>
-        </div>
-
-        <div class="card" style="margin-bottom: var(--s4)">
-          <h3>Install steps</h3>
-          <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
-            <li>Download <code>DaleRaySetup.exe</code></li>
-            <li>Double-click the installer and follow the wizard</li>
-            <li>Launch <strong>Dale Ray</strong> from the Start Menu or desktop shortcut. Leave it running.</li>
+        <div class="flow-card">
+          <h3>Windows install</h3>
+          <ol class="flow-ol">
+            <li>Download Brand Agents for Windows.</li>
+            <li>Double-click the installer and follow the wizard.</li>
+            <li>Launch <strong>Brand Agents</strong> from the Start Menu or desktop. Leave it running.</li>
+            <li>Console to Start. Save info. Save memories. Drop <code>CHOSEN-AGENT.json</code> in the app console / office/files if you named a pet.</li>
             <li>If Windows SmartScreen appears: More info → Run anyway. Publisher should say Brand Agents when we are signed.</li>
           </ol>
           <p class="soft">No <code>npm install</code>. No developer tools. Node.js is not required.</p>
         </div>
 
-        <div id="account" class="card" style="margin-bottom: var(--s4)">
+        <div id="account" class="flow-card">
           <h3>Managed cloud account</h3>
           <p>After install, open <strong>Settings → Managed Brand Agents</strong> to register/login and checkout. BYOK keys never leave your PC.</p>
-          <p style="margin-top: var(--s2)">
+          <div class="btn-row">
             <a class="btn btn-secondary" href="pricing.html">View plans</a>
-          </p>
+            <a class="btn btn-primary" href="connect.html">Need a Grok Server URL?</a>
+          </div>
         </div>
 
         <h2>What first run asks</h2>
-        <div class="perm-board" style="max-width: none; margin-bottom: var(--s4)">
+        <div class="perm-board">
           <div class="title">On first launch (in-app)</div>
           <div class="perm-row"><span>Welcome &amp; risk framing</span><span class="ok">Required</span></div>
           <div class="perm-row"><span>Screen / mouse / keyboard / accessibility</span><span class="ok">Accept or decline each</span></div>
           <div class="perm-row"><span>Autonomy level 1–5</span><span class="ok">You set the level</span></div>
           <div class="perm-row"><span>AI mode: Local · BYOK · Managed</span><span class="ok">Required</span></div>
-          <div class="perm-row"><span>Name your agent (default Dale)</span><span class="ok">Next Windows build</span></div>
+          <div class="perm-row"><span>Name your pet (Patch or BeeDee)</span><span class="ok">Choose your click</span></div>
         </div>
-        <p class="soft" style="margin-bottom: var(--s4)">
+        <p class="soft">
           First run asks permissions and how it should think. Offscreen Send / Pay / Post wait on a confirm chip.
           Grok desktop clicks are not yet level-gated. Next Windows build: desktop clicks wait for Allow once;
           offscreen Send / Pay / Post still use the chip. Ordinary offscreen clicks stay ungated.
@@ -113,4 +143,3 @@
     <script src="assets/js/site.js"></script>
   </body>
 </html>
-

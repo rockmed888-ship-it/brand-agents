@@ -200,7 +200,8 @@ html[data-theme="light"] body.store {
   background-size: 800% auto;
   background-position: 0 0;
 }
-.tile-idle.dd { background-image: url("../body/dd-spritesheet.webp"); }
+.tile-idle.dd,
+.tile-idle.patch { background-image: url("../body/dd-spritesheet.webp"); }
 .tile-idle.beedee { background-image: url("../body/beedee-spritesheet.webp"); }
 .tile .meta {
   padding: 12px 14px 14px;
@@ -397,7 +398,7 @@ html[data-theme="light"] .sheet-panel .code {
 .choose-head h2 { margin: 6px 0 8px; letter-spacing: -0.03em; }
 .choose-show {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-top: 18px;
 }
@@ -428,7 +429,22 @@ html[data-theme="light"] .sheet-panel .code {
   text-shadow: 0 1px 8px #000;
 }
 .vitrine-meta { padding: 14px 14px 16px; }
-.vitrine-meta h3 { margin: 0 0 8px; font-size: 1.2rem; letter-spacing: -0.03em; }
+.vitrine-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+.vitrine-face {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: 50% 16%;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.vitrine-meta h3 { margin: 0; font-size: 1.2rem; letter-spacing: -0.03em; }
 .vitrine-meta label { display: block; font-size: 12px; color: var(--muted); }
 .vitrine-meta input {
   width: 100%;
@@ -572,4 +588,228 @@ html[data-theme="light"] .sheet-panel .code {
 
 @media (max-width: 420px) {
   .rail-row { grid-template-columns: 1fr; }
+}
+
+/* —— Connect / Download flow (Fluent cards, phone-first) —— */
+.flow-wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 18px 0 calc(48px + env(safe-area-inset-bottom, 0px));
+}
+.flow-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 180px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  margin: 12px 0 22px;
+}
+.flow-hero .face {
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 200px;
+  object-fit: cover;
+  object-position: 50% 14%;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+.flow-hero h1 { margin: 8px 0 10px; }
+.flow-hero .lead { max-width: 40rem; }
+.flow-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 20px;
+}
+.flow-step,
+.flow-card {
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(18px);
+  padding: 18px 18px 20px;
+}
+.flow-step {
+  padding: 16px;
+}
+.flow-step .n {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.flow-step h3 { margin: 0 0 6px; font-size: 1rem; }
+.flow-step p {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 14px;
+}
+.flow-card + .flow-card { margin-top: 14px; }
+.flow-card[hidden] { display: none !important; }
+.flow-wrap .perm-board { max-width: none; margin: 12px 0 16px; }
+.install-card .btn-row { margin-top: auto; }
+.flow-card h3 { margin-bottom: 8px; }
+.flow-card p { margin: 0; color: var(--secondary); font-size: 14px; line-height: 1.55; }
+.flow-ol {
+  margin: 8px 0 0;
+  padding-left: 1.2rem;
+  line-height: 1.7;
+  color: var(--secondary);
+}
+.flow-ol li { margin: 0 0 6px; }
+.flow-ol a { word-break: break-word; }
+.field-label {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+.field {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+}
+.field:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.code-box {
+  display: block;
+  word-break: break-all;
+  padding: 12px 14px;
+  background: #0b0d10;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 10px 0 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #9ec1ff;
+}
+html[data-theme="light"] .code-box {
+  background: #eef4fb;
+  color: #0b5cab;
+}
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.err {
+  color: #f87171;
+  font-size: 13px;
+  margin-top: 8px;
+  min-height: 1.2em;
+}
+.install-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.install-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--elevated) 80%, transparent);
+  text-decoration: none !important;
+  color: var(--text);
+  min-height: 100%;
+}
+.install-card:hover {
+  border-color: var(--accent-border);
+  color: var(--text);
+}
+.install-card img {
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  object-position: 50% 16%;
+  border-radius: 10px;
+}
+.install-card .kind {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.install-card strong {
+  display: block;
+  font-size: 15px;
+  margin: 2px 0 4px;
+}
+.install-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--secondary);
+}
+.dl-grid {
+  display: grid;
+  gap: 14px;
+}
+.dl-card {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+.dl-card .face {
+  width: 92px;
+  height: 92px;
+  object-fit: cover;
+  object-position: 50% 16%;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+.dl-card h3 { margin: 0 0 6px; }
+.store-hero.portrait img {
+  object-position: 50% 12%;
+}
+.store-hero.static { cursor: default; }
+
+@media (max-width: 840px) {
+  .flow-wrap { width: calc(100% - 20px); padding: 10px 0 36px; }
+  .flow-hero,
+  .flow-steps,
+  .install-grid,
+  .dl-card {
+    grid-template-columns: 1fr;
+  }
+  .flow-hero .face {
+    max-height: none;
+    height: min(42vw, 220px);
+    aspect-ratio: auto;
+  }
+  .btn-row .btn,
+  .flow-card .btn-lg {
+    width: 100%;
+    height: 48px;
+  }
+  .install-card { min-height: 0; }
+  .install-card img { height: 140px; }
+  .dl-card .face {
+    width: 100%;
+    height: 180px;
+  }
+  .perm-board { max-width: none; }
 }

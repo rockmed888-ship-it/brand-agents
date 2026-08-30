@@ -1,34 +1,16 @@
 /**
- * Choose your click — Dale, DD, BeeDee.
+ * Choose your click — Patch and BeeDee.
  * Each body works on computer or phone. User names them.
- * Funny task loops: 3D Mixamo clips or overlay sprite rows.
+ * Funny task loops on overlay sprite rows.
  */
 const AGENTS = [
   {
-    id: "dale",
-    title: "Dale",
-    kind: "Desk body",
-    file: "./assets/body/dale-ray.glb",
-    kind3d: true,
-    suggested: "Dale",
-    getWin: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
-    getPhone: "releases/DD.apk",
-    clips: [
-      { names: ["Talking"], line: "Dictating the boring part" },
-      { names: ["Pointing"], line: "That button. That one." },
-      { names: ["Waving", "wave"], line: "Done. Your mouse is still yours." },
-      { names: ["Rapping"], line: "Status report, with rhythm" },
-      { names: ["Strut Walking"], line: "Walking over to the app" },
-      { names: ["Flying"], line: "Skipping the loading screen" },
-      { names: ["mixamo.com", "Floating", "idle"], line: "On the desk. Waiting." },
-    ],
-  },
-  {
-    id: "dd",
-    title: "DD",
-    kind: "Phone overlay · also desk",
+    id: "patch",
+    title: "Patch",
+    kind: "Click pet · computer or phone",
     sheet: "./assets/body/dd-spritesheet.webp",
-    suggested: "DD",
+    face: "./assets/body/patch-face.jpg",
+    suggested: "Patch",
     getWin: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
     getPhone: "releases/DD.apk",
     tasks: [
@@ -43,8 +25,9 @@ const AGENTS = [
   {
     id: "beedee",
     title: "BeeDee",
-    kind: "Phone overlay · also desk",
+    kind: "Click pet · computer or phone",
     sheet: "./assets/body/beedee-spritesheet.webp",
+    face: "./assets/body/beedee-face.webp",
     suggested: "BeeDee",
     getWin: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
     getPhone: "releases/BeeDee.apk",
@@ -73,6 +56,12 @@ function loadAll() {
 
 function saveAll(data) {
   localStorage.setItem(KEY, JSON.stringify(data));
+}
+
+function savedFor(agent, all) {
+  if (all[agent.id]) return all[agent.id];
+  if (agent.id === "patch" && all.dd) return { ...all.dd, body: "patch" };
+  return null;
 }
 
 function loadImage(src) {
@@ -131,90 +120,12 @@ function playSprite(canvas, img, tasks) {
   };
 }
 
-async function playDale(canvas, agent) {
-  const THREE = await import("three");
-  const { GLTFLoader } = await import("three/addons/loaders/GLTFLoader.js");
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: "low-power" });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.setClearColor(0x000000, 0);
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(28, 1, 0.05, 80);
-  camera.position.set(0, 1.12, 4.2);
-  scene.add(new THREE.HemisphereLight(0xe8f0ff, 0x141820, 1.35));
-  const key = new THREE.DirectionalLight(0xfff6e8, 2.4);
-  key.position.set(2.4, 4.2, 3.2);
-  scene.add(key);
-  const rim = new THREE.DirectionalLight(0x4f8cff, 0.9);
-  rim.position.set(-3, 2, -2);
-  scene.add(rim);
-  const gltf = await new Promise((resolve, reject) => {
-    new GLTFLoader().load(agent.file, resolve, undefined, reject);
-  });
-  const model = gltf.scene;
-  model.traverse((o) => {
-    if (o.isMesh) {
-      o.castShadow = false;
-      o.receiveShadow = false;
-    }
-  });
-  const box = new THREE.Box3().setFromObject(model);
-  const size = box.getSize(new THREE.Vector3());
-  model.scale.setScalar(1.55 / Math.max(size.x, size.y, size.z, 0.001));
-  const scaled = new THREE.Box3().setFromObject(model);
-  const center = scaled.getCenter(new THREE.Vector3());
-  model.position.set(-center.x, -scaled.min.y, -center.z);
-  scene.add(model);
-  const mixer = new THREE.AnimationMixer(model);
-  const clips = gltf.animations || [];
-  const clock = new THREE.Clock();
-  let clipI = 0;
-  let line = agent.clips[0].line;
-  let nextAt = 0;
-  function playClip() {
-    const spec = agent.clips[clipI % agent.clips.length];
-    clipI += 1;
-    const clip =
-      clips.find((c) => spec.names.some((n) => c.name.toLowerCase() === n.toLowerCase())) ||
-      clips.find((c) => spec.names.some((n) => c.name.toLowerCase().includes(n.toLowerCase()))) ||
-      clips[0];
-    if (!clip) return;
-    mixer.stopAllAction();
-    const action = mixer.clipAction(clip);
-    action.reset().setLoop(THREE.LoopRepeat, Infinity).fadeIn(0.2).play();
-    line = spec.line;
-    canvas.dataset.line = line;
-    nextAt = performance.now() + 3200;
-  }
-  playClip();
-  let raf = 0;
-  const tick = () => {
-    raf = requestAnimationFrame(tick);
-    const parent = canvas.parentElement;
-    const w = Math.max(1, parent.clientWidth);
-    const h = Math.max(1, parent.clientHeight);
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-    mixer.update(clock.getDelta());
-    if (performance.now() > nextAt) playClip();
-    renderer.render(scene, camera);
-  };
-  tick();
-  return {
-    stop() {
-      cancelAnimationFrame(raf);
-      renderer.dispose();
-    },
-    line() {
-      return canvas.dataset.line || line;
-    },
-  };
-}
-
 function mountCard(el, agent, saved) {
   const name = saved?.name || agent.suggested;
-  const device = saved?.device || (agent.id === "dale" ? "computer" : "phone");
+  const device = saved?.device || (agent.id === "patch" ? "computer" : "phone");
+  const face = agent.face
+    ? `<img class="vitrine-face" src="${agent.face}" alt="" />`
+    : "";
   el.innerHTML = `
     <div class="vitrine-stage">
       <canvas></canvas>
@@ -222,7 +133,10 @@ function mountCard(el, agent, saved) {
     </div>
     <div class="vitrine-meta">
       <p class="choose-hint">${agent.kind}</p>
-      <h3>${agent.title}</h3>
+      <div class="vitrine-title">
+        ${face}
+        <h3>${agent.title}</h3>
+      </div>
       <label>Your name for them
         <input data-name maxlength="24" value="${name.replace(/"/g, "")}" placeholder="${agent.suggested}" />
       </label>
@@ -245,11 +159,15 @@ function mountCard(el, agent, saved) {
     });
   });
   function downloadChosen(all) {
+    const agents = {};
+    AGENTS.forEach((a) => {
+      if (all[a.id]) agents[a.id] = { ...all[a.id], body: a.id };
+    });
     const payload = {
       version: 1,
-      put: "Copy to Dale office/files/CHOSEN-AGENT.json (Windows). Phone: keep this file in Downloads.",
+      put: "Drop this in the Brand Agents app console / office/files so the name sticks. Phone: keep this file in Downloads.",
       active: agent.id,
-      agents: all,
+      agents,
     };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     const a = document.createElement("a");
@@ -262,6 +180,7 @@ function mountCard(el, agent, saved) {
     const all = loadAll();
     const n = (nameInput.value || agent.suggested).trim().slice(0, 24);
     all[agent.id] = { name: n, device: deviceNow, body: agent.id, at: Date.now() };
+    if (agent.id === "patch") delete all.dd;
     saveAll(all);
     savedEl.textContent = `${n} · ${deviceNow} · file downloaded`;
     nameInput.value = n;
@@ -269,19 +188,18 @@ function mountCard(el, agent, saved) {
   });
   if (saved?.name) savedEl.textContent = `${saved.name} · ${saved.device}`;
 
-  const boot = agent.kind3d
-    ? playDale(canvas, agent)
-    : loadImage(agent.sheet).then((img) => playSprite(canvas, img, agent.tasks));
-
-  boot.then((player) => {
-    const tickLine = () => {
-      if (taskEl) taskEl.textContent = player.line();
-    };
-    tickLine();
-    setInterval(tickLine, 400);
-  }).catch((err) => {
-    if (taskEl) taskEl.textContent = err.message || "Body failed to load";
-  });
+  loadImage(agent.sheet)
+    .then((img) => playSprite(canvas, img, agent.tasks))
+    .then((player) => {
+      const tickLine = () => {
+        if (taskEl) taskEl.textContent = player.line();
+      };
+      tickLine();
+      setInterval(tickLine, 400);
+    })
+    .catch((err) => {
+      if (taskEl) taskEl.textContent = err.message || "Body failed to load";
+    });
 }
 
 function mountChooser(root) {
@@ -290,7 +208,7 @@ function mountChooser(root) {
   root.innerHTML = AGENTS.map((a) => `<article class="vitrine" data-agent="${a.id}"></article>`).join("");
   root.querySelectorAll(".vitrine").forEach((el) => {
     const agent = AGENTS.find((a) => a.id === el.getAttribute("data-agent"));
-    mountCard(el, agent, saved[agent.id]);
+    mountCard(el, agent, savedFor(agent, saved));
   });
 }
 

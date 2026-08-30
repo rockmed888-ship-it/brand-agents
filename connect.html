@@ -2,89 +2,121 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Join the Click — Brand Agents</title>
     <meta
       name="description"
-      content="Grok Voice and text. One Server URL. Dale, DD, or BeeDee on computer or phone."
+      content="Three steps: get a Server URL, install Patch or BeeDee, paste into Grok as Brand Agents. Grok is the brain. They click. You stay on Send."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/site.css" />
   </head>
-  <body>
+  <body class="store">
     <div id="site-header"></div>
-    <main class="section">
-      <div class="container" style="max-width:720px">
-        <p class="eyebrow">Join the Click</p>
-        <h1>Use Grok on either device. Drive the other.</h1>
-        <p class="lead">
-          Your mouse stays yours. In the offscreen browser, Send / Pay / Post wait for you.
-          Desktop Send is confirm-on-device when the job is only Send.
-          Next Windows build: desktop control tools wait for Allow once; send/post/pay tokens always confirm.
-          Ordinary offscreen clicks do not confirm.
-        </p>
+    <main class="flow-wrap">
+      <div class="flow-kicker">
+        <span class="live-chip">Join the Click</span>
+      </div>
+      <h1>Grok is the brain. Patch and BeeDee click.</h1>
+      <p class="lead">
+        Your mouse stays yours. Send / Pay / Post wait for you.
+        After you connect, Grok looks up the saved character — or asks what you want, you describe it, you name it, and a small pet pops on screen.
+      </p>
 
-        <div class="card" style="margin-bottom:1.5rem">
-          <h3>3 steps</h3>
-          <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
-            <li><strong>Get your link</strong> — start the trial below. This page then shows one Server URL.</li>
-            <li><strong>Install a body</strong> — Dale, DD, or BeeDee. Computer or phone. Leave it running.</li>
-            <li><strong>Paste once into Grok</strong> — Voice, phone app, or grok.com → Connectors → New → Custom → paste the Server URL (token is in the path).</li>
-          </ol>
+      <div class="flow-steps" aria-label="3 steps">
+        <article class="flow-step">
+          <span class="n">01</span>
+          <h3>Get Server URL</h3>
+          <p>Start the trial. This page then shows one URL. Token is already in the path.</p>
+        </article>
+        <article class="flow-step">
+          <span class="n">02</span>
+          <h3>Install Patch or BeeDee</h3>
+          <p>Computer or phone. Leave it running. Name them in Choose your click.</p>
+        </article>
+        <article class="flow-step">
+          <span class="n">03</span>
+          <h3>Paste into Grok</h3>
+          <p>grok.com/connectors → Custom. Name it <strong>Brand Agents</strong>.</p>
+        </article>
+      </div>
+
+      <div class="flow-card" id="locked">
+        <h3>1 · Get Server URL</h3>
+        <p>3-day trial, then $29/mo. Email so we can put your Server URL on this page after Stripe.</p>
+        <label class="field-label" for="payEmail">Email</label>
+        <input id="payEmail" class="field" type="email" autocomplete="email" required placeholder="you@example.com" />
+        <div class="btn-row">
+          <button class="btn btn-primary btn-lg" type="button" id="payStarter">Start trial · get Server URL</button>
         </div>
+        <p class="soft" id="payNote">The Windows app is a public download. The trial is how you get a Grok Server URL.</p>
+        <p class="err" id="payErr"></p>
+      </div>
 
-        <div class="card" id="locked" style="margin-bottom:1.5rem">
-          <h3>1 · Start 3-day trial · then $29/mo</h3>
-          <p>Email so we can put your Server URL on this page after Stripe.</p>
-          <label class="soft" for="payEmail" style="display:block;margin:0.75rem 0 0.35rem">Email</label>
-          <input id="payEmail" type="email" autocomplete="email" required placeholder="you@example.com" style="width:100%;max-width:360px;padding:0.65rem 0.8rem;border-radius:8px;border:1px solid #252b35;background:#0b0d10;color:#e8eaed;margin-bottom:0.85rem" />
-          <p>
-            <button class="btn btn-primary btn-lg" type="button" id="payStarter">Start trial · get Server URL</button>
-          </p>
-          <p class="soft" id="payNote">The Windows installer is a public file. The trial is how you get a Grok Server URL.</p>
-          <p class="soft" id="payErr" style="color:#f87171"></p>
-        </div>
-
-        <div class="card" id="unlocked" style="display:none;margin-bottom:1.5rem">
-          <h3>Your one Server URL</h3>
-          <p class="soft" id="unlockEmail"></p>
-          <code id="mcpUrl" style="display:block;word-break:break-all;padding:0.7rem 0.85rem;background:#0b0d10;border:1px solid #252b35;border-radius:8px;margin:0.5rem 0 0.75rem"></code>
+      <div class="flow-card" id="unlocked" hidden>
+        <h3>Your one Server URL</h3>
+        <p class="soft" id="unlockEmail"></p>
+        <code class="code-box" id="mcpUrl"></code>
+        <div class="btn-row">
           <button class="btn btn-primary" type="button" id="copyMcp">Copy Server URL</button>
-          <p class="soft" id="copyMsg" style="margin-top:0.75rem"></p>
-          <p class="soft" style="margin-top:0.75rem">
-            This is the <strong>Grok Voice URL</strong>. Name + URL only. Token is already in the path
-            (<code>/mcp/p/…</code>). Paste it in grok.com/connectors → Custom, and in the phone app → Server URL.
-          </p>
         </div>
+        <p class="soft" id="copyMsg"></p>
+        <p class="soft">
+          This is the Grok Voice URL. Name + URL only. Token is already in the path
+          (<code>/mcp/p/…</code>). Paste it in grok.com/connectors → Custom, and in the phone app → Server URL.
+        </p>
+      </div>
 
-        <div class="card" id="installCard" style="margin-bottom:1.5rem">
-          <h3>2 · Install Dale, DD, or BeeDee</h3>
-          <p class="muted">Pick a body. Computer or phone. Name it on <a href="index.html#choose">Choose your click</a>.</p>
-          <p style="margin-top:0.85rem;display:flex;flex-wrap:wrap;gap:8px">
-            <a class="btn btn-primary" id="dlBtn" href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe">Dale · Windows</a>
-            <a class="btn btn-secondary" id="ddBtn" href="releases/DD.apk">DD · Android</a>
-            <a class="btn btn-secondary" id="beedeeBtn" href="releases/BeeDee.apk">BeeDee · Android</a>
-          </p>
-          <p class="soft" style="margin-top:0.75rem">
-            Windows: install Dale → SmartScreen → More info → Run anyway → launch → leave it on.<br />
-            Phone: open this page in Chrome → allow install → Overlay + Accessibility → Start.
-            Drop <code>CHOSEN-AGENT.json</code> in Dale’s office/files so the name sticks.
-          </p>
+      <div class="flow-card" id="installCard">
+        <h3>2 · Install Patch or BeeDee</h3>
+        <p>Same pets on computer or phone. Name them on <a href="index.html#choose">Choose your click</a>.</p>
+        <div class="install-grid">
+          <a
+            class="install-card"
+            id="dlBtn"
+            href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe"
+          >
+            <img src="assets/body/patch-face.jpg" alt="" />
+            <span class="kind">Windows</span>
+            <strong>Brand Agents</strong>
+            <p>Patch on the desk. Console to Start, save info, save memories.</p>
+          </a>
+          <a class="install-card" id="ddBtn" href="releases/DD.apk">
+            <img src="assets/store/tile-patch.jpg" alt="" />
+            <span class="kind">Android</span>
+            <strong>Patch</strong>
+            <p>Overlay on the phone. Hold to talk. Double-tap to stop.</p>
+          </a>
+          <a class="install-card" id="beedeeBtn" href="releases/BeeDee.apk">
+            <img src="assets/body/beedee-face.webp" alt="" />
+            <span class="kind">Android</span>
+            <strong>BeeDee</strong>
+            <p>Same tools as Patch. White fox, pink dress, sparkles.</p>
+          </a>
         </div>
+        <p class="soft">
+          Windows: install Brand Agents → SmartScreen → More info → Run anyway → launch → leave it on.<br />
+          Phone: open this page in Chrome → allow install → Overlay + Accessibility → Start.
+          Drop <code>CHOSEN-AGENT.json</code> in the Brand Agents app console / office/files so the name sticks.
+        </p>
+      </div>
 
-        <div class="card" id="grokSteps" style="margin-bottom:1.5rem">
-          <h3>3 · Hook Grok Voice (same for text)</h3>
-          <ol class="muted" style="padding-left:1.2rem;line-height:1.7">
-            <li>Open <a href="https://grok.com/connectors" target="_blank" rel="noopener">grok.com/connectors</a> (phone Voice uses this too).</li>
-            <li>New Connector → <strong>Custom</strong>. Name it <strong>Dale Ray</strong>.</li>
-            <li>Paste the Server URL. No Bearer field. If the URL is only <code>/mcp</code> without <code>/p/…</code>, it will not attach to your PC.</li>
-          </ol>
-          <h3 style="margin-top:1.25rem">You are connected when the other device moves</h3>
-          <ul class="muted" style="padding-left:1.2rem;line-height:1.7">
-            <li>Voice or text: “Dale, open Notepad.” “DD, open Messages.” “BeeDee, open Gmail.”</li>
-            <li>On the phone: hold the pet to talk; double-tap to stop.</li>
-          </ul>
-          <p class="soft">You keep Send, Pay, and Post. One Stop switch. Uninstall ends it.</p>
-        </div>
+      <div class="flow-card" id="grokSteps">
+        <h3>3 · Paste into Grok</h3>
+        <ol class="flow-ol">
+          <li>Open <a href="https://grok.com/connectors" target="_blank" rel="noopener">grok.com/connectors</a> (phone Voice uses this too).</li>
+          <li>New Connector → <strong>Custom</strong>. Name it <strong>Brand Agents</strong>.</li>
+          <li>Paste the Server URL. No Bearer field. If the URL is only <code>/mcp</code> without <code>/p/…</code>, it will not attach to your device.</li>
+        </ol>
+        <h3>You are connected when the other device moves</h3>
+        <ul class="flow-ol">
+          <li>Voice or text: “Patch, open Notepad.” “BeeDee, open Gmail.”</li>
+          <li>On the phone: hold the pet to talk; double-tap to stop.</li>
+          <li>No saved character? Tell Grok what you want — a monkey in a suit — name it, and Grok builds it.</li>
+        </ul>
+        <p class="soft">You keep Send, Pay, and Post. One Stop switch. Uninstall ends it.</p>
       </div>
     </main>
     <div id="site-footer"></div>
@@ -107,8 +139,8 @@
         );
       }
       function showUnlocked(data) {
-        document.getElementById("locked").style.display = "none";
-        document.getElementById("unlocked").style.display = "block";
+        document.getElementById("locked").hidden = true;
+        document.getElementById("unlocked").hidden = false;
         const url = voiceUrl(data);
         document.getElementById("mcpUrl").textContent = url;
         document.getElementById("unlockEmail").textContent =
@@ -119,7 +151,7 @@
         if (data.dd_apk_url) document.getElementById("ddBtn").href = data.dd_apk_url;
         if (data.beedee_apk_url) document.getElementById("beedeeBtn").href = data.beedee_apk_url;
         document.getElementById("copyMcp").onclick = () =>
-          copy(url, "Copied. Paste into Grok Voice → Custom connector (Name + this URL).");
+          copy(url, "Copied. Paste into grok.com/connectors → Custom. Name it Brand Agents.");
       }
       const params = new URLSearchParams(location.search);
       const note = document.getElementById("payNote");
@@ -172,5 +204,6 @@
         }
       });
     </script>
+    <script src="assets/js/site.js"></script>
   </body>
 </html>

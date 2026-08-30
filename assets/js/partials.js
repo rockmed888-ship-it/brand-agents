@@ -1,4 +1,4 @@
-/** Brand Agents — brandbyagent.com shared chrome */
+/** Brand Agents — shared chrome */
 function brandHeader(active) {
   const items = [
     ["index.html", "Home"],
@@ -39,13 +39,12 @@ function brandFooter() {
         <div>
           <a class="brand" href="index.html"><span class="brand-mark"></span> Brand Agents</a>
           <p class="footer-note">Grok is the brain. They click for you. You keep Send, Pay, and Post.</p>
-          <p class="footer-note">brandbyagent.com · they click for you</p>
+          <p class="footer-note">Join the Click · they click for you</p>
         </div>
         <div>
           <h4>Product</h4>
           <a href="index.html#choose">Choose your click</a>
-          <a href="agents.html">Dale</a>
-          <a href="dd.html">DD</a>
+          <a href="agents.html">Patch</a>
           <a href="beedee.html">BeeDee</a>
           <a href="business.html">Organizations</a>
           <a href="pricing.html">Pricing</a>
