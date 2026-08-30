@@ -12,7 +12,7 @@ const AGENTS = [
     face: "./assets/body/patch-face.jpg",
     suggested: "Patch",
     getWin: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
-    getPhone: "releases/DD.apk",
+    getPhone: "https://rockmed888-ship-it.github.io/brand-agents/releases/DD.apk",
     tasks: [
       { row: 0, frames: 6, line: "Watching the screen" },
       { row: 7, frames: 6, line: "On the task" },
@@ -30,7 +30,7 @@ const AGENTS = [
     face: "./assets/body/beedee-face.webp",
     suggested: "BeeDee",
     getWin: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
-    getPhone: "releases/BeeDee.apk",
+    getPhone: "https://rockmed888-ship-it.github.io/brand-agents/releases/BeeDee.apk",
     tasks: [
       { row: 0, frames: 6, line: "Sparkle-staring at the inbox" },
       { row: 7, frames: 6, line: "Tapping through it" },
