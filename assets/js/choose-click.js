@@ -1,68 +1,48 @@
 /**
- * Choose your click — Patch and BeeDee.
- * Each body works on computer or phone. User names them.
- * Funny task loops on overlay sprite rows.
+ * Explore Patch and BeeDee — starters only.
+ * Custom pets are named and described in the Brand Agents app after install.
  */
 const AGENTS = [
   {
     id: "patch",
     title: "Patch",
-    kind: "Click pet · computer or phone",
+    kind: "Boy pet · 3D toy",
+    blurb: "Dark fox, orange scarf. On the phone the app is named DD.",
     sheet: "./assets/body/dd-spritesheet.webp",
     face: "./assets/body/patch-face.jpg",
-    suggested: "Patch",
-    getWin: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
     getPhone: "https://rockmed888-ship-it.github.io/brand-agents/releases/DD.apk",
+    phonePage: "dd.html",
     tasks: [
       { row: 0, frames: 6, line: "Watching the screen" },
       { row: 7, frames: 6, line: "On the task" },
-      { row: 3, frames: 4, line: "Hey — your turn" },
+      { row: 3, frames: 4, line: "Your turn" },
       { row: 6, frames: 6, line: "Waiting on Send" },
       { row: 8, frames: 6, line: "Checking the work" },
-      { row: 4, frames: 5, line: "Got it" },
+      { row: 4, frames: 5, line: "Done" },
     ],
   },
   {
     id: "beedee",
     title: "BeeDee",
-    kind: "Click pet · computer or phone",
+    kind: "Girl pet · 3D toy",
+    blurb: "White fox, pink dress. On the phone the app is named BeeDee.",
     sheet: "./assets/body/beedee-spritesheet.webp",
     face: "./assets/body/beedee-face.webp",
-    suggested: "BeeDee",
-    getWin: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
     getPhone: "https://rockmed888-ship-it.github.io/brand-agents/releases/BeeDee.apk",
+    phonePage: "beedee.html",
     tasks: [
-      { row: 0, frames: 6, line: "Sparkle-staring at the inbox" },
-      { row: 7, frames: 6, line: "Tapping through it" },
-      { row: 3, frames: 4, line: "Hi. Your move." },
+      { row: 0, frames: 6, line: "Watching the screen" },
+      { row: 7, frames: 6, line: "On the task" },
+      { row: 3, frames: 4, line: "Your turn" },
       { row: 6, frames: 6, line: "Waiting on Send" },
-      { row: 8, frames: 6, line: "Reviewing like a critic" },
-      { row: 4, frames: 5, line: "Cute. And done." },
+      { row: 8, frames: 6, line: "Checking the work" },
+      { row: 4, frames: 5, line: "Done" },
     ],
   },
 ];
 
-const KEY = "ba-choose-click-v2";
 const COLS = 8;
 const ROWS = 11;
-
-function loadAll() {
-  try {
-    return JSON.parse(localStorage.getItem(KEY) || "{}");
-  } catch {
-    return {};
-  }
-}
-
-function saveAll(data) {
-  localStorage.setItem(KEY, JSON.stringify(data));
-}
-
-function savedFor(agent, all) {
-  if (all[agent.id]) return all[agent.id];
-  if (agent.id === "patch" && all.dd) return { ...all.dd, body: "patch" };
-  return null;
-}
 
 function loadImage(src) {
   return new Promise((resolve, reject) => {
@@ -120,12 +100,7 @@ function playSprite(canvas, img, tasks) {
   };
 }
 
-function mountCard(el, agent, saved) {
-  const name = saved?.name || agent.suggested;
-  const device = saved?.device || (agent.id === "patch" ? "computer" : "phone");
-  const face = agent.face
-    ? `<img class="vitrine-face" src="${agent.face}" alt="" />`
-    : "";
+function mountCard(el, agent) {
   el.innerHTML = `
     <div class="vitrine-stage">
       <canvas></canvas>
@@ -134,59 +109,19 @@ function mountCard(el, agent, saved) {
     <div class="vitrine-meta">
       <p class="choose-hint">${agent.kind}</p>
       <div class="vitrine-title">
-        ${face}
+        <img class="vitrine-face" src="${agent.face}" alt="" />
         <h3>${agent.title}</h3>
       </div>
-      <label>Your name for them
-        <input data-name maxlength="24" value="${name.replace(/"/g, "")}" placeholder="${agent.suggested}" />
-      </label>
+      <p class="choose-blurb">${agent.blurb}</p>
       <div class="device-pills" role="group" aria-label="Computer or phone">
-        <button type="button" data-device="computer" class="${device === "computer" ? "on" : ""}">Computer</button>
-        <button type="button" data-device="phone" class="${device === "phone" ? "on" : ""}">Phone</button>
+        <a href="download.html#windows">Computer</a>
+        <a class="on" href="${agent.phonePage}">Phone</a>
       </div>
-      <button type="button" class="btn btn-get" data-save>This is my click</button>
-      <p class="choose-saved" data-saved></p>
+      <a class="btn btn-get" href="${agent.getPhone}">Get ${agent.title}</a>
+      <p class="choose-note">Name and describe in the app after install.</p>
     </div>`;
   const canvas = el.querySelector("canvas");
   const taskEl = el.querySelector("[data-task]");
-  const nameInput = el.querySelector("[data-name]");
-  const savedEl = el.querySelector("[data-saved]");
-  let deviceNow = device;
-  el.querySelectorAll("[data-device]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      deviceNow = btn.getAttribute("data-device");
-      el.querySelectorAll("[data-device]").forEach((b) => b.classList.toggle("on", b === btn));
-    });
-  });
-  function downloadChosen(all) {
-    const agents = {};
-    AGENTS.forEach((a) => {
-      if (all[a.id]) agents[a.id] = { ...all[a.id], body: a.id };
-    });
-    const payload = {
-      version: 1,
-      put: "Drop this in the Brand Agents app console / office/files so the name sticks. Phone: keep this file in Downloads.",
-      active: agent.id,
-      agents,
-    };
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "CHOSEN-AGENT.json";
-    a.click();
-    URL.revokeObjectURL(a.href);
-  }
-  el.querySelector("[data-save]").addEventListener("click", () => {
-    const all = loadAll();
-    const n = (nameInput.value || agent.suggested).trim().slice(0, 24);
-    all[agent.id] = { name: n, device: deviceNow, body: agent.id, at: Date.now() };
-    if (agent.id === "patch") delete all.dd;
-    saveAll(all);
-    savedEl.textContent = `${n} · ${deviceNow} · file downloaded`;
-    nameInput.value = n;
-    downloadChosen(all);
-  });
-  if (saved?.name) savedEl.textContent = `${saved.name} · ${saved.device}`;
 
   loadImage(agent.sheet)
     .then((img) => playSprite(canvas, img, agent.tasks))
@@ -197,18 +132,17 @@ function mountCard(el, agent, saved) {
       tickLine();
       setInterval(tickLine, 400);
     })
-    .catch((err) => {
-      if (taskEl) taskEl.textContent = err.message || "Body failed to load";
+    .catch(() => {
+      if (taskEl) taskEl.textContent = agent.kind;
     });
 }
 
 function mountChooser(root) {
   if (!root) return;
-  const saved = loadAll();
   root.innerHTML = AGENTS.map((a) => `<article class="vitrine" data-agent="${a.id}"></article>`).join("");
   root.querySelectorAll(".vitrine").forEach((el) => {
     const agent = AGENTS.find((a) => a.id === el.getAttribute("data-agent"));
-    mountCard(el, agent, savedFor(agent, saved));
+    mountCard(el, agent);
   });
 }
 

@@ -1,13 +1,18 @@
 (() => {
+  const WIN =
+    "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe";
+  const PATCH_APK = "https://rockmed888-ship-it.github.io/brand-agents/releases/DD.apk";
+  const BEEDEE_APK = "https://rockmed888-ship-it.github.io/brand-agents/releases/BeeDee.apk";
+
   const APPS = [
     {
       id: "patch-win",
       name: "Brand Agents for Windows",
-      kind: "Patch · Windows",
-      blurb: "Patch on the desk. Named clicks. You stay on Send.",
+      kind: "Windows · Patch on the desk",
+      blurb: "Install Brand Agents. In the app choose Patch, BeeDee, or describe anyone. They click. You stay on Send.",
       art: "assets/store/tile-patch.jpg",
-      cover: "assets/body/patch-face.jpg",
-      get: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
+      cover: "assets/store/hero-patch.jpg",
+      get: WIN,
       getLabel: "Get",
       more: "download.html#windows",
       code: '#BrandAgents Window "Brand Agents" Invoke',
@@ -15,62 +20,50 @@
     {
       id: "patch-phone",
       name: "Patch",
-      kind: "Android",
-      blurb: "Same pet on the phone. Hold to talk. You stay on Send.",
+      kind: "Android · app named DD",
+      blurb: "Boy pet. Dark fox, orange scarf, 3D toy. File is DD.apk. Overlay, Hands, Accessibility DD, Start DD.",
       art: "assets/body/patch-face.jpg",
       cover: "assets/body/patch-face.jpg",
-      get: "https://rockmed888-ship-it.github.io/brand-agents/releases/DD.apk",
+      get: PATCH_APK,
       getLabel: "Get",
       more: "dd.html",
-      code: '#Patch Overlay "Start Patch" Invoke',
-    },
-    {
-      id: "beedee-win",
-      name: "BeeDee",
-      kind: "Windows",
-      blurb: "Same Windows app. Name BeeDee in Choose your click.",
-      art: "assets/body/beedee-face.webp",
-      cover: "assets/body/beedee-face.webp",
-      get: "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe",
-      getLabel: "Get",
-      more: "download.html#windows",
-      code: '#BrandAgents Window "Brand Agents" Invoke',
+      code: '#DD Overlay "Start DD" Invoke',
     },
     {
       id: "beedee-phone",
       name: "BeeDee",
-      kind: "Android",
-      blurb: "BeeDee’s body. You name them. Computer or phone.",
+      kind: "Android · app named BeeDee",
+      blurb: "Girl pet. White fox, pink dress, 3D toy. Overlay, Hands, Accessibility BeeDee, Start BeeDee.",
       art: "assets/body/beedee-face.webp",
       cover: "assets/body/beedee-face.webp",
-      get: "https://rockmed888-ship-it.github.io/brand-agents/releases/BeeDee.apk",
+      get: BEEDEE_APK,
       getLabel: "Get",
       more: "beedee.html",
       code: '#BeeDee Overlay "Start BeeDee" Invoke',
     },
     {
-      id: "voice",
-      name: "Grok connector",
-      kind: "Voice · car · phone",
-      blurb: "Name it Brand Agents. One Server URL. Same connector for voice and text.",
+      id: "trial",
+      name: "Start trial",
+      kind: "Server URL · Grok connector",
+      blurb: "Phone APK is free. The trial is the Grok Server URL. After unlock, copy it and paste in Grok as Brand Agents.",
       art: "assets/store/mica.jpg",
       cover: "assets/store/mica.jpg",
       get: "connect.html",
-      getLabel: "Join",
+      getLabel: "Start trial",
       more: "connect.html",
-      code: '#ServerUrl Edit "Server URL" Invoke',
+      code: "Name: Brand Agents",
     },
     {
-      id: "orgs",
-      name: "Organizations",
-      kind: "Teams",
-      blurb: "Train the click on your stack. A person still owns Send.",
+      id: "how",
+      name: "How it works",
+      kind: "One path",
+      blurb: "Explore → Trial → Get the app → Choose pet in the app → Save → copy connector → paste in Grok → reload. The pet shows.",
       art: "assets/store/click.jpg",
       cover: "assets/store/click.jpg",
-      get: "business.html",
-      getLabel: "Walkthrough",
-      more: "business.html",
-      code: '#Org Path "Train the click" Invoke',
+      get: "how-it-works.html",
+      getLabel: "Read the path",
+      more: "how-it-works.html",
+      code: "Explore → Trial → Get → App",
     },
   ];
 
@@ -109,13 +102,9 @@
     document.body.style.overflow = "";
   }
 
-  document.querySelectorAll("a.btn-get").forEach((a) => {
-    a.addEventListener("click", (e) => e.stopPropagation());
-  });
-
   document.querySelectorAll("[data-app]").forEach((el) => {
     el.addEventListener("click", (e) => {
-      if (e.target.closest("a.btn-get") || e.target.closest("[data-watch-click]")) return;
+      if (e.target.closest("a, button")) return;
       const app = APPS.find((a) => a.id === el.getAttribute("data-app"));
       openSheet(app);
     });
@@ -161,7 +150,7 @@
     demo.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const get = document.querySelector(".store-hero .btn-get");
+      const get = document.querySelector(".store-hero .btn-get") || document.querySelector(".product-id .btn-get");
       embodiedTo(get);
     });
   }

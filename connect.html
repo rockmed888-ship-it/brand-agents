@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Join the Click — Brand Agents</title>
+    <meta name="theme-color" content="#0b0d10" />
+    <title>Start trial — Brand Agents</title>
     <meta
       name="description"
-      content="Three steps: get a Server URL, install Patch or BeeDee, paste into Grok as Brand Agents. Grok is the brain. They click. You stay on Send."
+      content="Start a 3-day trial for a Grok Server URL. Phone APKs are free. After unlock, copy the connector named Brand Agents and download the app."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,37 +20,39 @@
       <div class="flow-kicker">
         <span class="live-chip">Join the Click</span>
       </div>
-      <h1>Grok is the brain. Patch and BeeDee click.</h1>
+      <h1>Start trial. Get a Server URL.</h1>
       <p class="lead">
-        Install on the phone is free. You do not pay for the APK.
-        The 3-day trial is only the Grok Server URL — so Grok can talk to that phone or computer.
-        Send / Pay / Post wait for you.
+        The phone app is free. You do not pay for the APK.
+        The 3-day trial is the Grok Server URL — so Grok can talk to that phone or computer.
+        After unlock you copy the connector and download Brand Agents.
       </p>
 
-      <div class="flow-steps" aria-label="3 steps">
-        <article class="flow-step">
-          <span class="n">01</span>
-          <h3>Install (free)</h3>
-          <p>Patch or BeeDee on the phone, or Brand Agents on Windows. No card for this step.</p>
+      <div class="split-choice">
+        <article>
+          <span class="tag">Free</span>
+          <h3>Install first</h3>
+          <p>
+            Put Patch or BeeDee on the phone, or Brand Agents on Windows.
+            Overlay, Hands, Start. Paste the Server URL when you have it.
+          </p>
+          <a class="text-link" href="#installCard">See free installs</a>
         </article>
-        <article class="flow-step">
-          <span class="n">02</span>
-          <h3>Get Server URL</h3>
-          <p>3-day trial, then $29/mo. That URL is how Grok finds your pet.</p>
-        </article>
-        <article class="flow-step">
-          <span class="n">03</span>
-          <h3>Paste into Grok</h3>
-          <p>grok.com/connectors → Custom. Name it <strong>Brand Agents</strong>.</p>
+        <article>
+          <span class="tag">Trial</span>
+          <h3>Trial first</h3>
+          <p>
+            Start trial, copy your Server URL, then download Brand Agents.
+            Same result either way. The APK is never behind this step.
+          </p>
+          <a class="text-link" href="#locked">Start trial below</a>
         </article>
       </div>
 
       <div class="flow-card" id="installCard">
-        <h3>1 · Install — free</h3>
+        <h3>Install — free</h3>
         <p>
           Same pets on computer or phone. On Android the Patch app is named <strong>DD</strong>.
-          Accessibility: <strong>DD</strong>. Button: <strong>Start DD</strong>.
-          Full steps: <a href="dd.html">Patch</a> · <a href="beedee.html">BeeDee</a>.
+          Accessibility: <strong>DD</strong> or <strong>BeeDee</strong>. Button: <strong>Start DD</strong> / <strong>Start BeeDee</strong>.
         </p>
         <div class="install-grid">
           <a
@@ -59,8 +62,8 @@
           >
             <img src="assets/body/patch-face.jpg" alt="" />
             <span class="kind">Windows</span>
-            <strong>Brand Agents</strong>
-            <p>Patch on the desk. Console to Start, save info, save memories.</p>
+            <strong>Brand Agents for Windows</strong>
+            <p>Choose Patch, BeeDee, or describe anyone in the app.</p>
           </a>
           <a
             class="install-card"
@@ -70,7 +73,7 @@
             <img src="assets/store/tile-patch.jpg" alt="" />
             <span class="kind">Android · free</span>
             <strong>Patch</strong>
-            <p>File is DD.apk. App name DD. Overlay is Patch.</p>
+            <p>File is DD.apk. App name DD. Overlay, Hands, Start DD.</p>
           </a>
           <a
             class="install-card"
@@ -80,7 +83,7 @@
             <img src="assets/body/beedee-face.webp" alt="" />
             <span class="kind">Android · free</span>
             <strong>BeeDee</strong>
-            <p>App name BeeDee. Overlay is BeeDee.</p>
+            <p>App name BeeDee. Overlay, Hands, Start BeeDee.</p>
           </a>
         </div>
         <p class="soft">
@@ -90,8 +93,11 @@
       </div>
 
       <div class="flow-card" id="locked">
-        <h3>2 · Get Server URL</h3>
-        <p>This is the only paid step. 3-day trial, then $29/mo. Email so we can put your Server URL on this page after Stripe.</p>
+        <h3>Start trial — Server URL</h3>
+        <p>
+          This is the only paid step. 3-day trial, then $29/mo.
+          Email so we can put your Server URL on this page after Stripe.
+        </p>
         <label class="field-label" for="payEmail">Email</label>
         <input id="payEmail" class="field" type="email" autocomplete="email" required placeholder="you@example.com" />
         <div class="btn-row">
@@ -101,8 +107,8 @@
         <p class="err" id="payErr"></p>
       </div>
 
-      <div class="flow-card" id="unlocked" hidden>
-        <h3>Your one Server URL</h3>
+      <div class="flow-card unlock-stack" id="unlocked" hidden>
+        <h3>Your Server URL</h3>
         <p class="soft" id="unlockEmail"></p>
         <code class="code-box" id="mcpUrl"></code>
         <div class="btn-row">
@@ -110,25 +116,58 @@
         </div>
         <p class="soft" id="copyMsg"></p>
         <p class="soft">
-          This is the Grok Voice URL. Name + URL only. Token is already in the path
-          (<code>/mcp/p/…</code>). Paste it in grok.com/connectors → Custom, and in the phone app → Server URL.
+          This is the Brand Agents connector. Name + URL only. Token is already in the path
+          (<code>/mcp/p/…</code>). Paste it in grok.com/connectors → Custom, name it <strong>Brand Agents</strong>,
+          and in the app → Server URL → Save.
         </p>
+
+        <h3 style="margin-top: 22px">Download Brand Agents</h3>
+        <p>Install is still free. Get the app, choose a pet, Save, then paste the URL you copied above.</p>
+        <div class="install-grid">
+          <a
+            class="install-card"
+            id="dlBtnUnlock"
+            href="https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe"
+          >
+            <img src="assets/body/patch-face.jpg" alt="" />
+            <span class="kind">Windows</span>
+            <strong>Brand Agents for Windows</strong>
+            <p>Launch Brand Agents. Choose boy, girl, or describe anyone.</p>
+          </a>
+          <a
+            class="install-card"
+            id="ddBtnUnlock"
+            href="https://rockmed888-ship-it.github.io/brand-agents/releases/DD.apk"
+          >
+            <img src="assets/store/tile-patch.jpg" alt="" />
+            <span class="kind">Android · free</span>
+            <strong>Patch</strong>
+            <p>App named DD. Overlay, Hands, Start DD.</p>
+          </a>
+          <a
+            class="install-card"
+            id="beedeeBtnUnlock"
+            href="https://rockmed888-ship-it.github.io/brand-agents/releases/BeeDee.apk"
+          >
+            <img src="assets/body/beedee-face.webp" alt="" />
+            <span class="kind">Android · free</span>
+            <strong>BeeDee</strong>
+            <p>App named BeeDee. Overlay, Hands, Start BeeDee.</p>
+          </a>
+        </div>
       </div>
 
       <div class="flow-card" id="grokSteps">
-        <h3>3 · Paste into Grok</h3>
+        <h3>In the app, then Grok</h3>
         <ol class="flow-ol">
-          <li>Open <a href="https://grok.com/connectors" target="_blank" rel="noopener">grok.com/connectors</a> (phone Voice uses this too).</li>
+          <li>Choose boy (Patch), girl (BeeDee), or describe anyone. Save.</li>
+          <li>Paste the Server URL in the app. Save.</li>
+          <li>Open <a href="https://grok.com/connectors" target="_blank" rel="noopener">grok.com/connectors</a>.</li>
           <li>New Connector → <strong>Custom</strong>. Name it <strong>Brand Agents</strong>.</li>
-          <li>Paste the Server URL. No Bearer field. If the URL is only <code>/mcp</code> without <code>/p/…</code>, it will not attach to your device.</li>
+          <li>Paste the same Server URL. No Bearer field. If the URL is only <code>/mcp</code> without <code>/p/…</code>, it will not attach.</li>
+          <li>If you described someone, Grok builds that 3D toy. Reload Brand Agents. The pet shows.</li>
         </ol>
-        <h3>You are connected when the other device moves</h3>
-        <ul class="flow-ol">
-          <li>Voice or text: “Patch, open Notepad.” “BeeDee, open Gmail.”</li>
-          <li>On the phone: hold the pet to talk; double-tap to stop.</li>
-          <li>No saved character? Tell Grok what you want — a monkey in a suit — name it, and Grok builds it.</li>
-        </ul>
-        <p class="soft">You keep Send, Pay, and Post. One Stop switch. Uninstall ends it.</p>
+        <p class="soft">Voice or text: “Patch, open Notepad.” “BeeDee, open Gmail.” Hold the pet to talk; double-tap to stop. You keep Send, Pay, and Post.</p>
       </div>
     </main>
     <div id="site-footer"></div>
@@ -137,6 +176,8 @@
       document.getElementById("site-header").innerHTML = brandHeader("connect.html");
       document.getElementById("site-footer").innerHTML = brandFooter();
       const API = "https://brand-agents-api-production.up.railway.app";
+      const WIN =
+        "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe";
       function voiceUrl(data) {
         const t = String(data?.pairing_token || "").trim();
         if (t) return API + "/mcp/p/" + t;
@@ -159,11 +200,20 @@
           (data.unlimited ? "Founder / unlimited. " : "Trial / paid for ") +
           (data.email || "your account") +
           ".";
-        document.getElementById("dlBtn").href = data.download_url || "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe";
-        if (data.dd_apk_url) document.getElementById("ddBtn").href = data.dd_apk_url;
-        if (data.beedee_apk_url) document.getElementById("beedeeBtn").href = data.beedee_apk_url;
+        const win = data.download_url || WIN;
+        document.getElementById("dlBtn").href = win;
+        document.getElementById("dlBtnUnlock").href = win;
+        if (data.dd_apk_url) {
+          document.getElementById("ddBtn").href = data.dd_apk_url;
+          document.getElementById("ddBtnUnlock").href = data.dd_apk_url;
+        }
+        if (data.beedee_apk_url) {
+          document.getElementById("beedeeBtn").href = data.beedee_apk_url;
+          document.getElementById("beedeeBtnUnlock").href = data.beedee_apk_url;
+        }
         document.getElementById("copyMcp").onclick = () =>
           copy(url, "Copied. Paste into grok.com/connectors → Custom. Name it Brand Agents.");
+        document.getElementById("unlocked").scrollIntoView({ behavior: "smooth", block: "start" });
       }
       const params = new URLSearchParams(location.search);
       const note = document.getElementById("payNote");
@@ -186,8 +236,8 @@
         .then((h) => {
           if (sid) return;
           note.textContent = h.stripe_live
-            ? "3-day trial, then $29/mo."
-            : "3-day trial checkout is wired.";
+            ? "3-day trial, then $29/mo. Phone apps stay free."
+            : "3-day trial checkout is wired. Phone apps stay free.";
         })
         .catch(() => {});
       document.getElementById("payStarter").addEventListener("click", async () => {

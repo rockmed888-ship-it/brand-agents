@@ -3,74 +3,130 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0d10" />
     <title>How it works — Brand Agents</title>
+    <meta
+      name="description"
+      content="Explore Patch or BeeDee, start a trial for a Server URL, download Brand Agents, choose a pet in the app, paste the connector in Grok, reload. The pet shows."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/site.css" />
   </head>
-  <body>
+  <body class="store">
     <div id="site-header"></div>
-    <main class="section">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Join the Click</p>
-          <h1>Whichever device you are on, the other one clicks.</h1>
-          <p class="lead">
-            Brand Agents. Join the Click. You talk to Grok. Grok is the brain.
-            Patch and BeeDee click on Windows or Android. Same Grok account on the phone app or the computer.
-          </p>
-        </div>
+    <main class="how-wrap">
+      <p class="eyebrow">Join the Click</p>
+      <h1>One path. Then the pet shows.</h1>
+      <p class="lead">
+        Grok is the brain. Pets click. You stay on Send, Pay, and Post.
+        Phone apps are free. The trial is the Grok Server URL.
+      </p>
 
-        <div class="steps" style="margin-bottom: var(--s6)">
-          <div class="step">
-            <div class="step-n">01</div>
-            <h3>Install a pet</h3>
-            <p>Brand Agents on Windows. Patch or BeeDee on Android. Leave them running.</p>
+      <ol class="path-grid" style="margin-top: 28px">
+        <li>
+          <span class="n">01</span>
+          <h3>Explore</h3>
+          <p>Open Home. Watch Patch (boy) and BeeDee (girl). Starters only on this site.</p>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <h3>Start trial</h3>
+          <p>Email, then checkout. You get a Server URL. That is the trial — not the APK.</p>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <h3>Download the app</h3>
+          <p>Brand Agents for Windows, or Patch / BeeDee on Android. Install is free.</p>
+        </li>
+        <li id="in-app">
+          <span class="n">04</span>
+          <h3>Choose in the app</h3>
+          <p>Boy pet (Patch), girl pet (BeeDee), or describe anyone. Same 3D toy quality as Patch.</p>
+        </li>
+        <li>
+          <span class="n">05</span>
+          <h3>Save</h3>
+          <p>Save the pet in Brand Agents so the name and body stick.</p>
+        </li>
+        <li>
+          <span class="n">06</span>
+          <h3>Copy the connector</h3>
+          <p>Copy your Server URL from the trial page. This is the Brand Agents connector.</p>
+        </li>
+        <li>
+          <span class="n">07</span>
+          <h3>Paste in Grok</h3>
+          <p>grok.com/connectors → Custom. Name it <strong>Brand Agents</strong>. Paste the URL. No Bearer field.</p>
+        </li>
+        <li>
+          <span class="n">08</span>
+          <h3>Grok builds (custom)</h3>
+          <p>If you described someone, Grok builds that 3D toy. Patch and BeeDee are already ready.</p>
+        </li>
+        <li>
+          <span class="n">09</span>
+          <h3>Reload Brand Agents</h3>
+          <p>Reload the app. The pet shows. They click. You stay on Send.</p>
+        </li>
+      </ol>
+
+      <h2>Phone (Android)</h2>
+      <p class="muted" style="margin-bottom: 12px">
+        Open Get in Chrome on the phone. Patch file is <code>DD.apk</code> — the app is named <strong>DD</strong>.
+        BeeDee file is <code>BeeDee.apk</code> — the app is named <strong>BeeDee</strong>.
+      </p>
+      <div class="phone-steps">
+        <article class="flow-card">
+          <h3>Patch</h3>
+          <ol class="flow-ol">
+            <li>Download Patch. Allow <strong>Install unknown apps</strong> for Chrome if asked.</li>
+            <li>Open the app named <strong>DD</strong>.</li>
+            <li>Tap <strong>Overlay</strong>.</li>
+            <li>Tap <strong>Hands</strong>. Accessibility → turn on <strong>DD</strong>.</li>
+            <li>Tap <strong>Start DD</strong>.</li>
+          </ol>
+          <div class="btn-row">
+            <a class="btn btn-secondary" href="dd.html">Patch steps</a>
           </div>
-          <div class="step">
-            <div class="step-n">02</div>
-            <h3>Paste one URL into Grok</h3>
-            <p>Connectors → Custom. Name it Brand Agents. Works in the Grok phone app and on the computer.</p>
+        </article>
+        <article class="flow-card">
+          <h3>BeeDee</h3>
+          <ol class="flow-ol">
+            <li>Download BeeDee. Allow <strong>Install unknown apps</strong> for Chrome if asked.</li>
+            <li>Open the app named <strong>BeeDee</strong>.</li>
+            <li>Tap <strong>Overlay</strong>.</li>
+            <li>Tap <strong>Hands</strong>. Accessibility → turn on <strong>BeeDee</strong>.</li>
+            <li>Tap <strong>Start BeeDee</strong>.</li>
+          </ol>
+          <div class="btn-row">
+            <a class="btn btn-secondary" href="beedee.html">BeeDee steps</a>
           </div>
-          <div class="step">
-            <div class="step-n">03</div>
-            <h3>Talk from wherever you are</h3>
-            <p>Phone: “Patch, do this on the PC.” Computer: “BeeDee, do this on the phone.”</p>
-          </div>
-        </div>
-
-        <h2>After you connect</h2>
-        <p class="muted" style="margin-bottom: var(--s3)">
-          Grok looks up the saved character. If none, it asks what you want. You describe it — a monkey in a suit —
-          you name it, Grok builds it, and a small pet pops on screen. Starters on this site are Patch and BeeDee.
-        </p>
-
-        <h2>Autonomy model</h2>
-        <p class="muted" style="margin-bottom: var(--s3)">You set the level on first run. The live Grok desktop path does not yet enforce it.</p>
-        <div class="levels">
-          <div class="level"><strong>Suggest</strong><p>Proposes next steps. Nothing runs until you approve.</p></div>
-          <div class="level"><strong>Confirm each action</strong><p>Plans may be multi-step; each click or keystroke still needs confirmation.</p></div>
-          <div class="level"><strong>Limited autonomy</strong><p>Short, scoped sequences you pre-approve can complete without nagging on every micro-step.</p></div>
-          <div class="level"><strong>Higher autonomy</strong><p>Longer work within caps you set. Kill switch and action log remain on.</p></div>
-        </div>
-
-        <h2 style="margin-top: var(--s6)">First run</h2>
-        <p class="lead" style="margin-bottom: var(--s3)">
-          Welcome, permissions, autonomy, AI mode. Name Patch or BeeDee in Choose your click.
-        </p>
-        <p><a class="text-link" href="trust.html#tutorial">What first run asks →</a></p>
-
-        <h2 style="margin-top: var(--s6)">Requirements</h2>
-        <div class="card" style="max-width: 480px">
-          <p><strong style="color:var(--text)">Windows</strong> — primary, available at launch</p>
-          <p style="margin-top:8px"><strong style="color:var(--text)">Android</strong> — Patch and BeeDee</p>
-          <p style="margin-top:8px"><strong style="color:var(--text)">macOS</strong> — next</p>
-          <p class="caption" style="margin-top:12px">Network required for model calls and updates. Local presence and control settings stay on your machine.</p>
-        </div>
-
-        <p style="margin-top: var(--s5)">
-          <a class="btn btn-primary" href="connect.html">Join the Click · 3 steps</a>
-        </p>
+        </article>
       </div>
+
+      <h2>Windows</h2>
+      <article class="flow-card">
+        <p>
+          Download <strong>Brand Agents for Windows</strong>. Launch Brand Agents from the Start menu.
+          In the app: choose Patch, BeeDee, or describe anyone → Save → paste the Server URL →
+          copy the same line into Grok as <strong>Brand Agents</strong> → reload if Grok built a custom pet.
+        </p>
+      </article>
+
+      <h2>What you keep</h2>
+      <article class="flow-card">
+        <p>
+          Send, Pay, and Post wait for you. One Stop switch. Uninstall ends it.
+          You can install the free app first, or start the trial first. Same result.
+        </p>
+      </article>
+
+      <p class="btn-row" style="margin-top: 24px">
+        <a class="btn btn-primary btn-lg" href="connect.html">Start trial</a>
+        <a class="btn btn-secondary" href="download.html">Get the app</a>
+      </p>
     </main>
     <div id="site-footer"></div>
     <script src="assets/js/partials.js"></script>
