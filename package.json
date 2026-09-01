@@ -1,0 +1,8 @@
+{
+  "name": "brand-agents-site",
+  "private": true,
+  "description": "Join the Click site for brandbyagents.com",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

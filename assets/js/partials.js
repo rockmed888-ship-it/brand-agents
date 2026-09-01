@@ -69,7 +69,7 @@ function brandFooter() {
         <div>
           <a class="brand" href="index.html"><span class="brand-mark"></span> Brand Agents</a>
           <p class="footer-note">Grok is the brain. Pets click. You stay on Send, Pay, and Post.</p>
-          <p class="footer-note">Join the Click</p>
+          <p class="footer-note">Join the Click · brandbyagents.com</p>
         </div>
         <div>
           <h4>Product</h4>

@@ -6,7 +6,7 @@
 |--|--|
 | **Business name** | Brand Agents |
 | **Product** | Brand Agents — Join the Click (first Windows body: Dale Ray) |
-| **Domain** | brandbyagent.com *(domain only — preferred names were taken / high price)* |
+| **Domain** | https://brandbyagents.com |
 
 > This folder is the **website only**.  
 > It does **not** modify the Dale Ray desktop app at `Desktop\DaleRay`.
@@ -38,8 +38,8 @@ Start-Process index.html
 
 ## Deploy
 
-Live fallback: https://brand-agents.netlify.app  
-Apex `brandbyagent.com` when DNS is pointed at that Netlify site.
+Live: https://brandbyagents.com  
+GitHub Pages fallback: https://rockmed888-ship-it.github.io/brand-agents/
 
 ```powershell
 cd "$env:USERPROFILE\OneDrive\Desktop\brandbyagent.com"
