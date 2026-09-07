@@ -12,11 +12,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" href="assets/brand/mark.jpg" />
     <link rel="stylesheet" href="assets/css/site.css" />
+    <link rel="stylesheet" href="assets/css/shell.css" />
   </head>
-  <body class="store">
-    <div id="site-header"></div>
-    <main class="flow-wrap">
+  <body class="store shell">
+    <div id="ba-shell"></div>
+    <main class="shell-main flow-wrap">
       <div class="flow-kicker">
         <span class="live-chip">Join the Click</span>
       </div>
@@ -172,14 +174,11 @@
           <li>If already pasted under another name, rename only — do not change the URL.</li>
           <li>If you described someone, Grok builds that agent. Reload Brand Agents. They show.</li>
         </ol>
-        <p class="soft">Voice or text: “Patch, open Notepad.” “BeeDee, open Gmail.” Hold the agent to talk; double-tap to stop. Send, Pay, and Post wait on a confirm chip.</p>
+        <p class="soft">Voice or text: “Open Notepad.” “Open Gmail.” Hold the Brand Agent to talk; double-tap to stop. Send, Pay, and Post wait on a confirm chip.</p>
       </div>
     </main>
-    <div id="site-footer"></div>
-    <script src="assets/js/partials.js"></script>
+    <script src="assets/js/shell.js"></script>
     <script>
-      document.getElementById("site-header").innerHTML = brandHeader("connect.html");
-      document.getElementById("site-footer").innerHTML = brandFooter();
       const API = "https://brand-agents-api-production.up.railway.app";
       const WIN =
         "https://github.com/rockmed888-ship-it/brand-agents/releases/download/click-1/DaleRaySetup.exe";
