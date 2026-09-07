@@ -1,5 +1,11 @@
-Join the Click live:
+Join the Click live (this is the public product):
 https://brandbyagents.com
 
-GitHub Pages fallback:
+GitHub Pages:
 https://rockmed888-ship-it.github.io/brand-agents/
+
+API (Grok Server URL host):
+https://brand-agents-api-production.up.railway.app
+
+Do not use brandbyagent.com (no s) — it does not resolve.
+Never write brandbyagents.com as the company name. Company is Brand Agents. URL is brandbyagents.com.
