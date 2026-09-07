@@ -6,11 +6,13 @@
     <title>Pricing — Brand Agents</title>
     <meta name="description" content="3-day Starter trial, then $29/mo. Pro $79/mo upsell. Ultimate $149. No fake user counts." />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" href="assets/brand/mark.jpg" />
     <link rel="stylesheet" href="assets/css/site.css" />
+    <link rel="stylesheet" href="assets/css/shell.css" />
   </head>
-  <body>
-    <div id="site-header"></div>
-    <main class="section">
+  <body class="store shell">
+    <div id="ba-shell"></div>
+    <main class="shell-main">
       <div class="container">
         <div class="section-head center">
           <p class="eyebrow">Pricing</p>
@@ -141,12 +143,7 @@
         </div>
       </div>
     </main>
-    <div id="site-footer"></div>
-    <script src="assets/js/partials.js"></script>
-    <script>
-      document.getElementById("site-header").innerHTML = brandHeader("pricing.html");
-      document.getElementById("site-footer").innerHTML = brandFooter();
-    </script>
+    <script src="assets/js/shell.js"></script>
     <script src="assets/js/site.js"></script>
   </body>
 </html>
