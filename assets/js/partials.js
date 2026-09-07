@@ -3,7 +3,8 @@ function brandHeader(active) {
   const items = [
     ["index.html", "Home"],
     ["how-it-works.html", "How it works"],
-    ["connect.html", "Trial"],
+    ["pricing.html", "Price"],
+    ["connect.html", "Buy"],
     ["download.html", "Get"],
   ];
   const navMap = {
@@ -54,7 +55,7 @@ function brandHeader(active) {
       </nav>
       <div class="nav-actions">
         <button class="theme-toggle" type="button" data-theme-toggle title="Light or dark">◐</button>
-        <a class="btn btn-primary btn-get" href="connect.html">Start trial</a>
+        <a class="btn btn-primary btn-get" href="connect.html">Start trial · $29</a>
       </div>
     </div>
   </header>
@@ -68,8 +69,8 @@ function brandFooter() {
       <div class="footer-grid">
         <div>
           <a class="brand" href="index.html"><span class="brand-mark"></span> Brand Agents</a>
-          <p class="footer-note">Grok is the brain. Pets click. You stay on Send, Pay, and Post.</p>
-          <p class="footer-note">Join the Click · brandbyagents.com</p>
+          <p class="footer-note">Join the Click. A named agent on your desk. It clicks. You stay on Send.</p>
+          <p class="footer-note">Grok is the brain. Live checkout. · brandbyagents.com</p>
         </div>
         <div>
           <h4>Product</h4>
@@ -77,8 +78,8 @@ function brandFooter() {
           <a href="how-it-works.html">How it works</a>
           <a href="connect.html">Start trial</a>
           <a href="download.html">Get Brand Agents</a>
-          <a href="dd.html">Patch on Android</a>
-          <a href="beedee.html">BeeDee on Android</a>
+          <a href="dd.html">Patch on the glass</a>
+          <a href="beedee.html">BeeDee on the glass</a>
         </div>
         <div>
           <h4>Resources</h4>
@@ -105,7 +106,7 @@ function brandFooter() {
       </div>
       <div class="footer-bottom">
         <span>© <span data-year></span> Brand Agents</span>
-        <span>Phone apps are free. The trial is the Grok Server URL.</span>
+        <span>Phone apps are free. 3-day Starter trial, then $29/mo. Pro $79/mo upsell.</span>
       </div>
     </div>
   </footer>`;
