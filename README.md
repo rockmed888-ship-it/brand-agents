@@ -1,15 +1,16 @@
-# brandbyagent.com
+# Brand Agents site
 
 **Website for Brand Agents** (the business and product).
 
 | | |
 |--|--|
 | **Business name** | Brand Agents |
-| **Product** | Brand Agents — Join the Click (first Windows body: Dale Ray) |
+| **Product** | A named agent on your desk. It clicks. You stay on Send. |
+| **SKU** | Starter · 3-day trial · then $29/mo |
 | **Domain** | https://brandbyagents.com |
 
 > This folder is the **website only**.  
-> It does **not** modify the Dale Ray desktop app at `Desktop\DaleRay`.
+> It does **not** modify the Windows desktop app at `Desktop\DaleRay`.
 
 ## Open locally
 
