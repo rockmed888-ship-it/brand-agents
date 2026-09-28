@@ -1,0 +1,66 @@
+.cody-dock {
+  position: fixed;
+  z-index: 60;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  max-width: 440px;
+  pointer-events: none;
+}
+.cody-dock * { pointer-events: auto; }
+.cody-figure {
+  width: 92px;
+  height: 128px;
+  flex: 0 0 92px;
+  position: relative;
+  animation: cody-bob 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.35));
+}
+.cody-dock.talking .cody-figure { animation-duration: 0.45s; }
+.cody-mouth {
+  position: absolute;
+  left: 38px;
+  top: 48px;
+  width: 16px;
+  height: 4px;
+  border-radius: 8px;
+  background: #2a120c;
+  transition: height 0.08s linear, top 0.08s linear;
+}
+.cody-dock.talking .cody-mouth {
+  height: 10px;
+  top: 45px;
+  animation: cody-talk 0.18s steps(2) infinite;
+}
+.cody-card {
+  flex: 1;
+  background: rgba(16, 18, 22, 0.92);
+  color: #f4f1ea;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 12px 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+.cody-card p { margin: 0 0 8px; font-size: 14px; line-height: 1.4; }
+.cody-card .who { color: #ffd08a; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 650; }
+.cody-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.cody-actions button, .cody-actions a {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: #efe7da;
+  color: #14120e;
+  font: 600 13px/1.2 Inter, Segoe UI, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cody-actions a.ghost, .cody-actions button.ghost { background: transparent; color: #f4f1ea; border: 1px solid rgba(255,255,255,.3); }
+@keyframes cody-bob { 50% { transform: translateY(-4px); } }
+@keyframes cody-talk { 50% { transform: scaleY(0.45); } }
+@media (max-width: 640px) {
+  .cody-dock { max-width: none; }
+  .cody-figure { width: 72px; height: 100px; flex-basis: 72px; }
+}
