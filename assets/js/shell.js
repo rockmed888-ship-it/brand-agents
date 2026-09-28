@@ -13,7 +13,9 @@
       ["index.html", "Home"],
       ["index.html#demo", "How they work"],
       ["index.html#uses", "Uses"],
-      ["download.html", "Get"],
+      ["download.html", "Brand Agents"],
+      ["booked-out.html", "Booked Out"],
+      ["brain-connector.html", "Brain"],
       ["connect.html", "Buy"],
       ["pricing.html", "Price"],
     ];
@@ -178,4 +180,9 @@
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = String(new Date().getFullYear());
   });
+
+  const cody = document.createElement("script");
+  cody.src = "assets/js/cody.js";
+  cody.defer = true;
+  document.body.appendChild(cody);
 })();
