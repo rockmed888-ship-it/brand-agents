@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0d10" />
+    <title>Booked Out — Brand Agents</title>
+    <meta name="description" content="Booked Out builds your business social page and keeps the posts, the connections, and the visibility moving." />
+    <link rel="icon" href="assets/brand/mark.jpg" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <link rel="stylesheet" href="assets/css/shell.css" />
+  </head>
+  <body class="store shell">
+    <div id="ba-shell"></div>
+    <main class="shell-main">
+      <section class="hero-glass acrylic-pane">
+        <p class="kicker">Booked Out</p>
+        <h1>Your business stays visible when the week gets loud.</h1>
+        <p class="lead">Booked Out is the social upgrade. We build the business social page, then keep the connections, the posts, and the presence up. You win when people can still find you.</p>
+        <div class="hero-actions">
+          <a class="btn btn-lg btn-get" id="bo-install" href="downloads/booked-out.ps1">Download the Booked Out install</a>
+          <a class="btn btn-secondary" href="download.html">Brand Agents is a different install</a>
+        </div>
+      </section>
+      <section class="pane acrylic-pane" style="margin-top:16px">
+        <h2>What this install does</h2>
+        <p>It makes a Booked Out folder on the computer with a one-page social card: who you are, what you do, and how to reach you. That page is the presence. Brand Agents, if you add them later, are the hands that follow up. Brain Connector, if you add it later, is the brain on the site. This file is only Booked Out.</p>
+        <ol>
+          <li>Download <code>booked-out.ps1</code>.</li>
+          <li>Run it in PowerShell. It asks for the business name.</li>
+          <li>Open the page it writes. That is the social card.</li>
+        </ol>
+      </section>
+    </main>
+    <script src="assets/js/shell.js"></script>
+    <script>
+      document.getElementById("bo-install").addEventListener("click", () => {
+        if (window.__codyAlert) window.__codyAlert("download", "Booked Out install");
+      });
+    </script>
+  </body>
+</html>
