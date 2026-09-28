@@ -24,6 +24,16 @@
   status = 200
 
 [[redirects]]
+  from = "/booked-out"
+  to = "/booked-out.html"
+  status = 200
+
+[[redirects]]
+  from = "/brain-connector"
+  to = "/brain-connector.html"
+  status = 200
+
+[[redirects]]
   from = "/dd"
   to = "/dd.html"
   status = 200
