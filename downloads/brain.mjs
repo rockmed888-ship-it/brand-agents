@@ -64,6 +64,14 @@ function play(plug) {
   console.log(`${plug.label} is plugged in.`);
 }
 
+function mcpServer() {
+  const beside = path.join(home, "local-mcp.mjs");
+  if (fs.existsSync(beside)) return beside;
+  const nextToCli = path.join(path.dirname(process.argv[1] || ""), "local-mcp.mjs");
+  if (fs.existsSync(nextToCli)) return nextToCli;
+  return beside;
+}
+
 function build(argv) {
   const val = (flag) => {
     const i = argv.indexOf(flag);
@@ -71,41 +79,70 @@ function build(argv) {
   };
   const kind = (val("--kind") || "website").toLowerCase();
   const tier = (val("--tier") || "hobby").toLowerCase();
-  const name = val("--name");
-  const source = val("--source");
+  const name = val("--name").trim();
+  const source = val("--source").trim();
   const actions = (val("--actions") || "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
   const tiers = { hobby: 1000, learner: 3000, brilliant: 10000 };
-  if (!name || source.length < 40) {
-    console.log('Usage: brain build --kind website|assistant|automation --tier hobby|learner|brilliant --name "Name" --source "at least a few sentences" --actions "book,quote"');
+  const usage = [
+    'Usage: brain build --kind website --tier hobby --name "Your shop" --source "What the brain is allowed to know."',
+    'For an assistant or an automation, add --actions "book,quote".',
+    "The brain answers only from that note. It does not send, post, or pay.",
+  ];
+  if (!name || !source) {
+    console.log(usage.join("\n"));
+    process.exit(1);
+  }
+  if (!["website", "assistant", "automation"].includes(kind)) {
+    console.log("Kind must be website, assistant, or automation.");
     process.exit(1);
   }
   if ((kind === "assistant" || kind === "automation") && actions.length === 0) {
-    console.log("List --actions this assistant or automation may take.");
+    console.log('List --actions this assistant or automation may take. Example: --actions "book,quote"');
     process.exit(1);
   }
   if (!tiers[tier]) {
     console.log("Tier must be hobby, learner, or brilliant.");
     process.exit(1);
   }
+  const blocked = actions.filter((name) => ["send", "post", "pay", "publish", "delete"].includes(name));
+  if (blocked.length) {
+    console.log("Send, post, and pay stay with you. Leave those off --actions.");
+    process.exit(1);
+  }
   const id = "bc_" + Date.now().toString(16);
   const dir = path.join(home, "connectors", id);
   fs.mkdirSync(dir, { recursive: true });
-  const record = { id, name, kind, tier, calls: tiers[tier], source, actions };
+  const server = mcpServer();
+  const record = {
+    id,
+    name,
+    kind,
+    tier,
+    calls: tiers[tier],
+    used: 0,
+    source,
+    actions: kind === "website" ? [] : actions,
+  };
   const recordPath = path.join(dir, "connector.json");
   fs.writeFileSync(recordPath, JSON.stringify(record, null, 2));
+  const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "shop";
   const mcp = {
     mcpServers: {
-      [name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + "-brain"]: {
-        command: "node",
-        args: [path.join(home, "local-mcp.mjs"), recordPath],
+      [slug + "-brain"]: {
+        command: process.execPath,
+        args: [server, recordPath],
       },
     },
   };
   const file = path.join(dir, "mcp.json");
   fs.writeFileSync(file, JSON.stringify(mcp, null, 2));
+  if (!fs.existsSync(server)) {
+    console.log("Built the connector, but local-mcp.mjs is missing next to brain.");
+    console.log("Run the Brain Connector install again, then rebuild.");
+  }
   console.log(`Built ${kind} on ${tier}. ${tiers[tier]} calls.`);
   console.log(`MCP file: ${file}`);
-  console.log("It answers only from the notes you passed.");
+  console.log("It answers only from the notes you passed. It does not send, post, or pay.");
 }
 
 const args = process.argv.slice(2);
@@ -125,7 +162,7 @@ else if (args[0] === "plug") {
 else if (args[0] === "build") build(args);
 else {
   console.log("brain plugs");
-  console.log("brain plug calculator | website <path> | capcut");
+  console.log("brain plug calculator | website <path> | capcut | premiere | davinci");
   console.log("brain play");
-  console.log('brain build --kind website --tier hobby --name "Name" --source "notes"');
+  console.log('brain build --kind website --tier hobby --name "Your shop" --source "What the brain is allowed to know."');
 }
