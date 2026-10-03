@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 $shop = "https://brandbyagents.com"
-$pages = "https://rockmed888-ship-it.github.io/brand-agents"
+$pages = "https://raw.githubusercontent.com/rockmed888-ship-it/brand-agents/main"
 $dest = Join-Path $env:LOCALAPPDATA "BrainConnector"
 New-Item -ItemType Directory -Force -Path $dest | Out-Null
 $node = Get-Command node -ErrorAction SilentlyContinue
