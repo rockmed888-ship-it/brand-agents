@@ -15,6 +15,9 @@ const PRETTY = {
   "/connect": "/connect.html",
   "/grok": "/connect.html",
   "/download": "/download.html",
+  "/booked-out": "/booked-out.html",
+  "/brain-connector": "/brain-connector.html",
+  "/brain": "/brain-connector.html",
   "/dd": "/dd.html",
   "/beedee": "/beedee.html",
   "/how-it-works": "/how-it-works.html",
@@ -33,6 +36,8 @@ const MIME = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
+  ".mjs": "text/javascript; charset=utf-8",
+  ".ps1": "text/plain; charset=utf-8",
   ".json": "application/json",
   ".png": "image/png",
   ".jpg": "image/jpeg",
@@ -85,6 +90,12 @@ const server = http.createServer((req, res) => {
     };
     if (ext === ".apk") {
       headers["Content-Disposition"] = `attachment; filename="${path.basename(file)}"`;
+    }
+    if (path.basename(file) === "brain-install.ps1") {
+      headers["Content-Disposition"] = 'attachment; filename="brain-install.ps1"';
+    }
+    if (path.basename(file) === "jarvis.html") {
+      headers["X-Robots-Tag"] = "noindex, nofollow";
     }
     res.writeHead(200, headers);
     fs.createReadStream(file).pipe(res);

@@ -6,6 +6,7 @@ function brandHeader(active) {
     ["pricing.html", "Price"],
     ["connect.html", "Buy"],
     ["download.html", "Get"],
+    ["brain-connector.html", "Brain"],
   ];
   const navMap = {
     "try.html": "connect.html",

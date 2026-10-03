@@ -34,6 +34,11 @@
   status = 200
 
 [[redirects]]
+  from = "/brain"
+  to = "/brain-connector.html"
+  status = 200
+
+[[redirects]]
   from = "/dd"
   to = "/dd.html"
   status = 200
@@ -42,6 +47,16 @@
   from = "/jarvis"
   to = "/jarvis.html"
   status = 200
+
+[[headers]]
+  for = "/jarvis.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/jarvis"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
 
 [[redirects]]
   from = "/download/dd"
@@ -57,6 +72,17 @@
   from = "/try"
   to = "/try.html"
   status = 200
+
+[[headers]]
+  for = "/downloads/brain-install.ps1"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Content-Disposition = "attachment; filename=\"brain-install.ps1\""
+
+[[headers]]
+  for = "/downloads/*.mjs"
+  [headers.values]
+    Content-Type = "text/javascript; charset=utf-8"
 
 [[headers]]
   for = "/releases/DD.apk"
